@@ -1,0 +1,143 @@
+body {
+	font-family: sans-serif;
+	/* margin: 3rem; */
+	background-color: #302f66;
+}
+
+/* .pracbtn {
+	font: inherit;
+	padding: 0.5rem 1.5rem;
+	cursor: pointer;
+	border-radius: 4px;
+	background-color: #2a313a;
+	color: white;
+	border: 1px solid #1d3557;
+	margin: 1rem 1rem;
+}
+
+.pracbtn:hover {
+	background-color: #3e9497;
+	border-color: #feffff;
+}
+
+.pracbtn--alt {
+	background-color: transparent;
+	color: #800040;
+}
+
+.pracbtn--alt:hover {
+	background-color: #f8dae9;
+} 
+
+
+
+.menubuttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.pracmusicmenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color:#000000;
+	border-radius: 10%;
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+	margin: 1rem;
+	width: 45%;
+	height: 30em;
+}
+
+.videomenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color:#000000;
+	border-radius: 10%;
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+	margin: 1rem;
+	width: 45%;
+	height: 30em;
+}
+
+.videocontent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #000000;
+	border-radius: 10%;
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+	margin: 1rem;
+	width: 45%;
+	height: 50em;
+}
+
+.musiccontent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #000000;
+	border-radius: 10%;
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+	margin: 1rem;
+	width: 45%;
+	height: 30em;
+}
+
+.pracactions {
+	text-align: center;
+}
+
+.menuConfirm {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	background-color: white;
+	color: black;
+	padding: 1rem;
+	text-align: center;
+	width: 30rem;
+	z-index: 10;
+	position: fixed;
+	top: 20vh;
+	left: calc(50% - 15rem);
+}
+
+.pracbackdrop {
+	position: fixed;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.75);
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+
+.buttonStyles{
+	display:flex;
+	padding:0.46em 1.6em ;
+	border:0.1em solid #FFFFFF;
+	margin:'auto';
+	text-align:center;
+	border-radius:0.12em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'OCR A Std';
+	font-weight:300;
+	color:#FFFFFF;
+    background-color:rgb(33, 37, 41);
+	cursor: 'pointer';
+	transition: all 0.15s;
+	align-items: center;
+	}
+	.buttonStyles:hover{
+	color: #000000;;
+	border-color:#000000;
+	}
+
+	
+*/
