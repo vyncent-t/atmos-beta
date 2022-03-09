@@ -1,3 +1,4 @@
+require('dotenv').config({ path: `${__dirname}/../.env` })
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -8,13 +9,16 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json())
 
+export let spotifyClient = process.env.spotify_clientid
+export let spotifySecret = process.env.spotify_secret
 
-app.post('https://atmos-project.herokuapp.com/login', (req, res) => {
+app.post('http://localhost:3000', (req, res) => {
+
     const code = req.body.code
     const spotifyApi = new SpotifyWebApi({
-        redirectUri: 'https://atmos-project.herokuapp.com/',
-        clientId: '50885eb87ce14757bdde10e7fb01f91a',
-        clientSecret: '4acdaecbdc96463bbe8daee8d938550c'
+        redirectUri: 'http://localhost:3000',
+        clientId: `${spotifyClient}`,
+        clientSecret: `${spotifySecret}`
     })
 
     spotifyApi.authorizationCodeGrant(code).then(data => {
@@ -32,14 +36,14 @@ app.post('https://atmos-project.herokuapp.com/login', (req, res) => {
 
 
 
-app.post('https://atmos-project.herokuapp.com/refresh', (req, res) => {
+app.post('http://localhost:3000/refresh', (req, res) => {
     const refreshToken = req.body.refreshToken
     console.log(refreshToken)
 
     const spotifyApi = new SpotifyWebApi({
-        redirectUri: 'https://atmos-project.herokuapp.com/',
-        clientId: '50885eb87ce14757bdde10e7fb01f91a',
-        clientSecret: '4acdaecbdc96463bbe8daee8d938550c',
+        redirectUri: 'http://localhost:3000',
+        clientId: `${spotifyClient}`,
+        clientSecret: `${spotifySecret}`,
         refreshToken,
     })
 
@@ -59,6 +63,8 @@ app.post('https://atmos-project.herokuapp.com/refresh', (req, res) => {
 
 
 app.listen(process.env.PORT || 3001, () => {
+    console.log(`READING FOR SERVER - ${spotifyClient}`)
+    console.log(`READING FOR SERVER - ${spotifySecret}`)
     console.log("server live")
 })
 

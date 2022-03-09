@@ -1,4 +1,4 @@
-import useAuth from "../server/spotifyAuth"
+import useAuth from "../util/spotifyAuth"
 import { useSelector } from "react-redux"
 import title from '../images/title.png';
 import welcome from '../images/welcome.png';
