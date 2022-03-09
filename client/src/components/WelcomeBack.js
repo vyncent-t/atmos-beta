@@ -1,6 +1,5 @@
 import useAuth from "../server/spotifyAuth"
 import { useSelector } from "react-redux"
-import { AnimationWrapper } from 'react-hover-animation'
 import title from '../images/title.png';
 import welcome from '../images/welcome.png';
 import styles from './welcomeStyles.module.css'
@@ -37,9 +36,9 @@ function WelcomeBack(props) {
                         <h5 className="card-title">Welcome to atmos! </h5>
                         <p className="card-text">While using the app we combine youtube and spotify to allow you to both listen and watch anything of your choosing! Click whichever genre you would like to enjoy and relax!</p>
                         <div>
-                            <AnimationWrapper>
+                            <div>
                                 <Link to="/menu" className="m-3 btn btn-success">Continue</Link>
-                            </AnimationWrapper>
+                            </div>
                         </div>
                     </div>
                 </div>

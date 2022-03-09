@@ -1,6 +1,6 @@
 import { useState } from "react"
 import YouTube from "react-youtube"
-import styles from '../components/MainMenuStyles.module.css'
+import styles from './MainMenuStyles.module.css'
 
 var getYouTubeID = require('get-youtube-id')
 

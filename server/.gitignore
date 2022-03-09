@@ -1,13 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .env
-napkinpen.txt
-/notes
 
 # dependencies
+/notes
 /node_modules
 /.pnp
-
 .pnp.js
 
 # testing
