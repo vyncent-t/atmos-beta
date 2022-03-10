@@ -1,13 +1,14 @@
 import useAuth from "../util/spotifyAuth"
 import { useSelector } from "react-redux"
-import title from '../images/title.png';
 import welcome from '../images/welcome.png';
 import styles from './welcomeStyles.module.css'
 import { Link } from 'react-router-dom';
 
 
-
+// the authCode is coming from the intro page, on redirect we trim the parameter that is the access code from spotify, then we pass it into the useAuth function that connects to server
 function WelcomeBack(props) {
+
+
 
     var authCode = props.newCode
     console.log(authCode)
@@ -15,12 +16,11 @@ function WelcomeBack(props) {
 
     localStorage.setItem("spotifyCode", `${authCode}`)
 
+    // takes useAuth from utility, which runs the saveSpotify func from dispatch on store file, allows the user to be considered logged in, sets the exp, token, and other
+
     useAuth(authCode)
 
-
-    const isAuth = useSelector((state) => state.spotify.isSpotifyAuth)
     var accesstoken = useSelector((state) => state.spotify.accesstoken)
-    console.log(`welcome back comp loaded is auth ${isAuth}`)
     console.log(`welcome back comp loaded is current access token ${accesstoken}`)
     localStorage.setItem("spotifyToken", `${accesstoken}`)
 

@@ -1,18 +1,18 @@
 require('dotenv').config({ path: `${__dirname}/../.env` })
+const axios = require('axios')
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const SpotifyWebApi = require('spotify-web-api-node');
-
-
 const app = express();
 app.use(cors())
 app.use(bodyParser.json())
 
-export let spotifyClient = process.env.spotify_clientid
-export let spotifySecret = process.env.spotify_secret
+let spotifyClient = process.env.spotify_clientid
+let spotifySecret = process.env.spotify_secret
 
-app.post('http://localhost:3000', (req, res) => {
+
+app.post('http://localhost:3000/music/token', (req, res) => {
 
     const code = req.body.code
     const spotifyApi = new SpotifyWebApi({
