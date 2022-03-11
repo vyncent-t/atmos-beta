@@ -9,7 +9,7 @@ import Welcome from "../components/Welcome"
 import WelcomeBack from "../components/WelcomeBack"
 import styles from '../components/welcomeStyles.module.css'
 
-
+const axios = require('axios')
 
 //url used to authorize the spotify api and retrieve an access token along with the scope of parameters that we are asking permission for.
 // const AUTHORIZE = 'https://accounts.spotify.com/authorize?client_id=50885eb87ce14757bdde10e7fb01f91a&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state'
@@ -79,6 +79,14 @@ function Intropage() {
     //     
     // }
 
+
+    axios.get('/fruits').then(
+        (res) => {
+            console.log(res.data)
+        }
+    ).catch((error) => {
+        console.log(error)
+    })
 
 
     if (locationCode.length > 20 & location.search.slice(0, 6) === "?code=") {
