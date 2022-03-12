@@ -20,9 +20,11 @@ function Intropage() {
     const location = useLocation()
     console.log(location)
     // the slice needs to be at 6 in order for the api call to work DO NOT TOUCH
-    const locationCode = location.search.slice(6)
+    let locationCode = location.search.slice(6)
     console.log(`current location code from slice: ${locationCode}`)
     console.log(`current location CODE SLICE from slice: ${location.search.slice(0, 6)}`)
+
+    // locationCode = location.search.slice(0, 6)
 
     const params = useParams()
     console.log(`current code from params ${params.musicAuthCode}`)
@@ -42,10 +44,17 @@ function Intropage() {
     }
 
     function userSpotifyAuthHandler() {
+
+        axios.get('/spotify-redirect').then(response => {
+            window.location.href = `${response.data.redirectURL}`
+        }).catch(error => {
+            console.log(error)
+        })
+
         // dispatch(spotifyActions.updateSpotifyCode(locationCode))
-        window.location.href = authlink
+        // window.location.href = authlink
         // requestSpotifyAuth()
-        console.log(`current code from redirect button: ${musicPassword}`)
+        // console.log(`current code from redirect button: ${musicPassword}`)
     }
 
 
@@ -89,7 +98,8 @@ function Intropage() {
     })
 
 
-    if (locationCode.length > 20 & location.search.slice(0, 6) === "?code=") {
+
+    if (locationCode.length > 20) {
         dispatch(spotifyActions.updateSpotifyCode(locationCode))
         return (
             <div className={styles.bg}>
