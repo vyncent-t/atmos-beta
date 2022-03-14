@@ -76,31 +76,6 @@ app.use(bodyParser.json())
 // }
 
 
-const spotifyAuth = async (spotifyCode) => {
-    try {
-        const data = qs.stringify(
-            {
-                grant_type: "client_credentials",
-                code: spotifyCode,
-                redirect_uri: 'http://localhost:3000/',
-            }
-        )
-
-        const response = await axios.post('https://accounts.spotify.com/api/token',
-            data, {
-            headers: {
-                'Authorization': `Basic ${auth_token}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-        console.log("PRINTING SPOTIFY TOKEN")
-        console.log(response.data.access_token)
-        return response.data.access_token
-    } catch (error) {
-        console.log(error)
-        console.log("spotify error")
-    }
-}
 
 
 
@@ -112,9 +87,59 @@ app.get('/spotify-redirect', (req, res) => {
     })
 })
 
+
+// connection route to grab token once page renders from redirect
+
+
 app.post('/spotify-connect', (req, res) => {
+    // console log the code passed in from params on client
     console.log(req.body.code)
-    spotifyAuth(req.body.code)
+
+
+
+    // spotify auth function that makes axios post req to auth api endpoint
+    async function spotifyAuth(spotifyCode) {
+        try {
+            const data = qs.stringify(
+                {
+                    grant_type: "client_credentials",
+                    code: spotifyCode,
+                    redirect_uri: 'http://localhost:3000/',
+                }
+            )
+
+            const response = await axios.post('https://accounts.spotify.com/api/token',
+                data, {
+                headers: {
+                    'Authorization': `Basic ${auth_token}`,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+
+            // console log the response and send response as json back to client to keep in local storage
+
+
+            console.log("PRINTING SPOTIFY TOKEN")
+            console.log(response.data.access_token)
+            res.json({
+                "token": response.data.access_token
+            })
+            return response.data.access_token
+        } catch (error) {
+            console.log(error)
+            console.log("spotify error")
+        }
+    }
+
+    try {
+        let authToken = spotifyAuth(req.body.code)
+        console.log("auth token")
+
+    } catch (error) {
+        console.log(error)
+    }
+
+
 })
 
 

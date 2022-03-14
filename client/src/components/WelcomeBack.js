@@ -35,9 +35,10 @@ function WelcomeBack() {
     }).then(
         (res) => {
             console.log("new access token")
+            console.log(res)
             console.log(res.data.token)
             // accesstoken = res.data.access_token
-            localStorage.setItem("spotifyToken", `${accesstoken}`)
+            localStorage.setItem("spotifyToken", `${res.data.token}`)
         }
     ).catch(
         (error) => {
