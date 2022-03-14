@@ -26,9 +26,9 @@ app.use(bodyParser.json())
 //             'Authorization': `Basic ${auth_token}`
 //         },
 //         data: {
+//             'grant_type': "client_credentials",
 //             'code': `${spotifyCode}`,
 //             'redirect_uri': 'http://localhost:3000',
-//             'grant_type': "authorization_code"
 //         }
 //     }).then(tokenres => {
 //         console.log(tokenres.data.access_token)
@@ -39,21 +39,61 @@ app.use(bodyParser.json())
 //     })
 // }
 
+// const spotifyAuth = async (spotifyCode) => {
+//     try {
+//         const spotifyURL = 'https://accounts.spotify.com/api/token';
+
+
+//         const dataInit = {
+//             grant_type: "client_credentials",
+//             code: spotifyCode,
+//             redirect_uri: 'http://localhost:3000/',
+//         }
+//         // const data = qs.stringify(dataInit);
+
+
+//         const headers = {
+//             'Authorization': `Basic ${auth_token}`,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//         }
+
+//         const response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(dataInit), headers).then(
+//             (response) => {
+//                 console.log(response.data.access_token)
+//                 return response.data.access_token
+//             }
+//         ).catch(
+//             (error) => {
+//                 console.log("axios token error")
+//                 console.log(error)
+//             }
+//         )
+
+//     } catch (error) {
+//         console.log(error)
+//         console.log("spotify error")
+//     }
+// }
+
+
 const spotifyAuth = async (spotifyCode) => {
     try {
-        const spotifyURL = 'https://accounts.spotify.com/api/token';
-        const dataInit = {
-            code: spotifyCode,
-            grant_type: "authorization_code",
-            redirect_uri: 'http://localhost:3000/',
-        }
-        const data = qs.stringify(dataInit);
-        const headers = {
-            'Authorization': `Basic ${auth_token}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        const data = qs.stringify(
+            {
+                grant_type: "client_credentials",
+                code: spotifyCode,
+                redirect_uri: 'http://localhost:3000/',
+            }
+        )
 
-        const response = await axios.post('https://accounts.spotify.com/api/token', data, headers)
+        const response = await axios.post('https://accounts.spotify.com/api/token',
+            data, {
+            headers: {
+                'Authorization': `Basic ${auth_token}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        console.log("PRINTING SPOTIFY TOKEN")
         console.log(response.data.access_token)
         return response.data.access_token
     } catch (error) {
@@ -63,50 +103,18 @@ const spotifyAuth = async (spotifyCode) => {
 }
 
 
+
 app.get('/spotify-redirect', (req, res) => {
 
 
     res.json({
         "redirectURL": `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`
     })
-
-
-    // axios.get(`https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=https://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`)
-    //     .then(response => {
-    //         res.send(response.data)
-    //     }).catch(error => {
-    //         console.log(error)
-    //     })
-
-
-
-    // res.redirect('http://accounts.spotify.com/authorize?' +
-    //     QueryString.stringify({
-    //         response_type: 'code',
-    //         client_id: `${spotifyClient}`,
-    //         redirect_uri: 'http://localhost:3000'
-    //     }))
 })
 
 app.post('/spotify-connect', (req, res) => {
     console.log(req.body.code)
     spotifyAuth(req.body.code)
-
-
-    // var authOptions = {
-    //     url: 'https//accounts.spotify.com/api/token',
-    //     form: {
-    //         code: req.body.code,
-    //         redirect_uri: 'http://localhost:3000',
-    //         grant_type: 'authorization_code'
-    //     },
-    //     headers: {
-    //         'Authorization': `Basic ${auth_token}`
-    //     },
-    //     json: true
-    // }
-
-
 })
 
 
