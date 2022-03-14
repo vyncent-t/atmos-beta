@@ -132,7 +132,7 @@ app.post('/spotify-connect', (req, res) => {
     }
 
     try {
-        let authToken = spotifyAuth(req.body.code)
+        spotifyAuth(req.body.code)
         console.log("auth token")
 
     } catch (error) {
