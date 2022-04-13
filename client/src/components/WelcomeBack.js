@@ -1,5 +1,4 @@
-import useAuth from "../util/spotifyAuth"
-import { useSelector } from "react-redux"
+// import useAuth from "../../util/spotifyAuth"
 import welcome from '../images/welcome.png';
 import styles from './welcomeStyles.module.css'
 import { useLocation } from "react-router-dom"
@@ -34,11 +33,12 @@ function WelcomeBack() {
         code: `${authCode}`
     }).then(
         (res) => {
+            // the following is printed on the browser console
             console.log("new access token")
             console.log(res)
-            console.log(res.data.token)
+            console.log(`reading res data ${res.data}`)
             // accesstoken = res.data.access_token
-            localStorage.setItem("spotifyToken", `${res.data.token}`)
+            localStorage.setItem("spotifyToken", `${res.data}`)
         }
     ).catch(
         (error) => {

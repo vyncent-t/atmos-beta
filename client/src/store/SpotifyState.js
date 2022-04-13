@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialSpotifyState = {
     isSpotifyAuth: false,
-    clientid: "50885eb87ce14757bdde10e7fb01f91a",
-    clientsecret: "4acdaecbdc96463bbe8daee8d938550c",
+    clientid: "n",
+    clientsecret: "n",
     authcode: "none code",
     accesstoken: "none token",
     refreshtoken: "none refresh",

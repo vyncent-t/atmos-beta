@@ -24,8 +24,6 @@ function Intropage() {
     const params = useParams()
     console.log(`current code from params ${params.musicAuthCode}`)
 
-    const authlink = useSelector((state) => state.spotify.spotifyAuthLink)
-    const isAuth = useSelector((state) => state.spotify.isSpotifyAuth)
     const musicPassword = useSelector((state) => state.spotify.authcode)
     const musicToken = useSelector((state) => state.spotify.accesstoken)
     const musicRefresh = useSelector((state) => state.spotify.refreshtoken)

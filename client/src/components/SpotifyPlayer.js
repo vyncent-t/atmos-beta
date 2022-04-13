@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import SpotifyPlayer from 'react-spotify-web-playback';
+
 import { useState } from "react"
 
 function SpotifyMusicPlayer(props) {
@@ -21,7 +21,18 @@ function SpotifyMusicPlayer(props) {
         prevHandler()
     }
 
-    var accessToken = localStorage.getItem("spotifyToken")
+
+
+
+    function searchPlaylist(code) {
+
+        console.log(`reading playlist code for ${code}`)
+    }
+
+
+
+
+    // var accessToken = localStorage.getItem("spotifyToken")
     var playlistCode = localStorage.getItem(`musicplaylistcode${arrayNum}`)
     console.log(`current spotify playlist`, playlistCode)
 
@@ -32,14 +43,23 @@ function SpotifyMusicPlayer(props) {
                     {arrayNum > 0 && <button className="btn btn-outline-light" onClick={prevHandler}>back</button>}
                     {arrayNum < 10 && <button className="btn btn-outline-light" onClick={nextHandler}>next playlist</button>}
                 </div>
+
+
+
+
                 <div>
-                    <SpotifyPlayer
-                        initialVolume={0.15}
-                        uris={[`${playlistCode}`]}
-                        autoPlay={"true"}
-                        token={`${accessToken}`}
-                        showSaveIcon={"true"}
-                    />
+
+                    {/* create a fetch request / axios request to our custom api point to search for and pull playlist data whenever the page renders or the playlist slot on line 25 is changed by hitting next playlist */}
+
+                    {searchPlaylist(playlistCode)}
+
+                    <div>
+
+                        {/* create a list of songs component under the album component */}
+
+                    </div>
+
+
                 </div>
             </div>
         </Fragment>

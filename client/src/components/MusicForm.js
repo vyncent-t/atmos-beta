@@ -10,10 +10,9 @@ function MusicForm(props) {
     const musicToken = localStorage.getItem("spotifyToken")
     const musicChoice = useSelector((state) => state.content.musicButtonChoice)
 
+    console.log(`reading ON MUSIC ID FROM STATE ${musicid}`)
 
-    const spotifyApi = new SpotifyWebApi({
-        clientId: `${musicid}`,
-    })
+    const spotifyApi = new SpotifyWebApi()
 
     spotifyApi.setAccessToken(`${musicToken}`)
 
@@ -23,21 +22,31 @@ function MusicForm(props) {
     }, [musicToken])
 
 
-    function updateContent(content) {
+
+    // this function will be ran within the promise of each api req below, it will take the entire response object and select the first 10 playlist items to be saved in local storage
+
+    function updateMusicContent(content) {
         for (let i = 0; i < 10; i++) {
             localStorage.setItem(`musicplaylistcode${i}`, `${content[i]}`)
         }
     }
 
+
+    // by default the fresh menu has a value of "none" for the music genre playlist, this makes the default data search for peaceful unless a music genre is clicked, making the musicChoice variable change - but the button to create a room isnt going to render unless the user clicks both music and video options
+
     if (musicChoice === "none") {
         spotifyApi.searchPlaylists("peaceful").then(
             (res) => {
+                // console logs the response in browser inspect
                 console.log(`music playlist res:`, res.body)
+                // parses into the list of playlist items
                 var playlistMusicItems = res.body.playlists.items
+                // maps the playlist items for their codes
                 var playlistCodes = playlistMusicItems.map(playlist => {
-                    return playlist.uri
+                    return playlist.id
                 })
-                updateContent(playlistCodes)
+                // runs function from before that now updates the codes into local storage to be used later
+                updateMusicContent(playlistCodes)
             }
         ).catch((err) => {
             console.log('Something went wrong!', err);
@@ -48,9 +57,9 @@ function MusicForm(props) {
                 console.log(`music playlist res:`, res.body)
                 var playlistMusicItems = res.body.playlists.items
                 var playlistCodes = playlistMusicItems.map(playlist => {
-                    return playlist.uri
+                    return playlist.id
                 })
-                updateContent(playlistCodes)
+                updateMusicContent(playlistCodes)
             }
         ).catch((err) => {
             console.log('Something went wrong!', err);
