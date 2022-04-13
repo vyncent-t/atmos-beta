@@ -7,6 +7,23 @@ import SpotifyMusicPlayer from "./SpotifyPlayer"
 
 
 function MusicContent() {
+
+
+    return (
+        <div className="card bg-success rounded ">
+            <div className="card-body">
+                <SpotifyMusicPlayer />
+                {/* <iframe title="playlist" src={`https://open.spotify.com/embed/playlist/${musicPlaylist[(currentPlaylist)]}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
+            </div>
+        </div>
+    )
+}
+
+export default MusicContent
+
+
+
+
     // var musicid = useSelector((state) => state.spotify.clientid)
     // const showContent = useSelector((state) => state.controls.showContentBox)
     // const musicToken = useSelector((state) => state.spotify.accesstoken)
@@ -48,16 +65,3 @@ function MusicContent() {
 
     // console.log(userMusicContent)
 
-
-
-    return (
-        <div className="card bg-success rounded ">
-            <div className="card-body">
-                <SpotifyMusicPlayer />
-                {/* <iframe title="playlist" src={`https://open.spotify.com/embed/playlist/${musicPlaylist[(currentPlaylist)]}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
-            </div>
-        </div>
-    )
-}
-
-export default MusicContent

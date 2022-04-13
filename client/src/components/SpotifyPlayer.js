@@ -36,9 +36,9 @@ function SpotifyMusicPlayer(props) {
                     <SpotifyPlayer
                         initialVolume={0.15}
                         uris={[`${playlistCode}`]}
-                        autoPlay={true}
+                        autoPlay={"true"}
                         token={`${accessToken}`}
-                        showSaveIcon={true}
+                        showSaveIcon={"true"}
                     />
                 </div>
             </div>
