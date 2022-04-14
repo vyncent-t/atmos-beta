@@ -69,18 +69,35 @@ function SpotifySection(props) {
         console.log("SET PLAYLIST IS NOW", playlist)
     }
 
-    // useEffect(
-    //     () => {
-    //         setPlaylistInfo(playlist)
-    //         console.log("playlist data that will", playlist)
-    //         // function updatePlaylistCode(ID){
-    //         //     setCurrentPlaylist(playlistID)
-    //         //     return playlistID
-    //         // }
+    // if the playlist is equal to none we set the attributes we want
 
-    // updatePlaylistInfo()
-    //     }, [playlist]
-    // )
+    if (playlist.id === "none") {
+        axios.post('/spotify-playlist', {
+            userData: {
+                playlistID: `${playlistID}`,
+                accessToken: `${accessToken}`
+            }
+        }).then(
+            (res) => {
+                console.log(`music playlist res ID ${playlistID}`, res)
+                // the following is printed on the browser console
+                console.log(`below is the whole res`)
+                // response print from the spotify custom you need to expand in browser console
+                console.log(res)
+                console.log("THE LINE ABOVE IS THE RES FROM THE SPOTIFY CUSTOM YOU NEED TO EXPAND IT INTO DATA THEN PLAYLISTS")
+                // NEED TO FORMAT AS STRING COMMA OBJECT FOR IT TO READ IN CONSOLE
+                console.log(`reading music 0 placement playlist res: `, res.data)
+
+                // now we will need a way to use the tracks within the playlist located as res.data.tracks.items
+
+                playlist.href = res.data.href
+                playlist.id = res.data.id
+                playlist.image = res.data.images[0].url
+                playlist.external_url = res.data.external_urls.spotify
+
+                return playlist
+            })
+    }
 
 
     useEffect(
@@ -159,16 +176,9 @@ function SpotifySection(props) {
                     <div className="card">
                         <div className="card-body">
                             <div className="card-title">
-                                {(
-                                    (playlist.id === "none") ? (
-                                        <div>
-                                            {playlistID}
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            {playlist.id}
-                                        </div>)
-                                )}
+                                <div>
+                                    {playlistInfo.id}
+                                </div>
                             </div>
                         </div>
                     </div>
