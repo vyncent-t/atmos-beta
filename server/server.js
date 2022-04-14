@@ -132,6 +132,23 @@ app.post('/spotify-set', async (req, res) => {
 
 
 
+app.post('/spotify-playlist', async (req, res) => {
+    // console log the keyword passed in from client
+    console.log(`reading in server the music keyword ${req.body.userData.musicKey}`)
+
+    // demo object to make sure it works on server console
+    spotifyCustom.speak(5)
+
+    try {
+        console.log("reading req body")
+        res.json(await spotifyCustom.playlistSelect(req.body.userData))
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+
+
 
 
 

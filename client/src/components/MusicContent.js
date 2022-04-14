@@ -1,7 +1,7 @@
 // import { useEffect } from "react"
 // import { useSelector } from "react-redux"
 
-import SpotifyMusicPlayer from "./SpotifyPlayer"
+import SpotifySection from "./SpotifySection"
 // import SpotifyWebApi from "spotify-web-api-node"
 
 
@@ -12,7 +12,7 @@ function MusicContent() {
     return (
         <div className="card bg-success rounded ">
             <div className="card-body">
-                <SpotifyMusicPlayer />
+                <SpotifySection />
                 {/* <iframe title="playlist" src={`https://open.spotify.com/embed/playlist/${musicPlaylist[(currentPlaylist)]}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
             </div>
         </div>

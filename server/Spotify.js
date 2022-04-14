@@ -59,14 +59,18 @@ async function spotifyAuth(spotifyCode) {
 
     } catch (error) {
         console.log(error)
-        console.log("spotify error")
+        console.log("spotify error from custom tool")
     }
 }
 
+// the function that will run the api to grab a set of playlist data based off of the keyword selected from the menu
 
+// we toss in the userData object that contains both the token and key word
 async function searchPlaylists(userData) {
     spotifyApi.setAccessToken(userData.accessToken)
 
+
+    // this returns as a response.body to the axios call on the client component
     try {
         let response = await spotifyApi.searchPlaylists(`${userData.musicKey}`)
         console.log("READING DATA FROM PLAYLIST REQ")
@@ -74,7 +78,23 @@ async function searchPlaylists(userData) {
         return response.body
     } catch (error) {
         console.log(error)
-        console.log("spotify error")
+        console.log("spotify error from custom tool - SEARCH PLAYLISTS")
+    }
+
+}
+
+// the function that will run to grab a specific playlist within the local storage and return its data
+async function selectPlaylists(userData) {
+    spotifyApi.setAccessToken(userData.accessToken)
+
+    try {
+        let response = await spotifyApi.getPlaylist(`${userData.playlistID}`)
+        console.log(`READING SPECIFIC PLAYLIST DATA ID ${userData.playlistID}`)
+        console.log(response)
+        return response.body
+    } catch (error) {
+        console.log(error)
+        console.log("spotify error from custom tool - GET")
     }
 
 }
@@ -96,6 +116,9 @@ const spotifyCustom = {
     },
     playlistRead: async function (userData) {
         return await searchPlaylists(userData)
+    },
+    playlistSelect: async function (userData) {
+        return await selectPlaylists(userData)
     },
 
 
