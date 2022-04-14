@@ -64,16 +64,18 @@ async function spotifyAuth(spotifyCode) {
 }
 
 
-function searchPlaylists(userData) {
-    spotifyApi.searchPlaylists(userData.term)
-        .then(
-            function (data) {
-                console.log(data.body)
-            },
-            function (err) {
-                console.log(err)
-            }
-        )
+async function searchPlaylists(userData) {
+    spotifyApi.setAccessToken(userData.accessToken)
+
+    try {
+        let response = await spotifyApi.searchPlaylists(`${userData.musicKey}`)
+        console.log("READING DATA FROM PLAYLIST REQ")
+        console.log(response)
+        return response.body
+    } catch (error) {
+        console.log(error)
+        console.log("spotify error")
+    }
 
 }
 
@@ -91,7 +93,10 @@ const spotifyCustom = {
     },
     connect: function (code) {
         return spotifyAuth(code)
-    }
+    },
+    playlistRead: async function (userData) {
+        return await searchPlaylists(userData)
+    },
 
 
 }
