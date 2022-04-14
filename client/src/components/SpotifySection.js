@@ -29,7 +29,7 @@ function SpotifySection(props) {
 
     let playlist = {
         href: "x",
-        id: "0",
+        id: "none",
         image: "y",
         external_url: "z"
     }
@@ -65,6 +65,8 @@ function SpotifySection(props) {
                 return playlistInfo
             }
         )
+
+        console.log("SET PLAYLIST IS NOW", playlist)
     }
 
     // useEffect(
@@ -83,6 +85,14 @@ function SpotifySection(props) {
 
     useEffect(
         () => {
+            setCurrentPlaylist(playlistID)
+            console.log("playlist ID taken from local storage", playlistID)
+            // function updatePlaylistCode(ID){
+            //     setCurrentPlaylist(playlistID)
+            //     return playlistID
+            // }
+
+            // updatePlaylistInfo()
             // axios calls whenever the playlistID changes
             axios.post('/spotify-playlist', {
                 userData: {
@@ -120,14 +130,7 @@ function SpotifySection(props) {
 
 
 
-            setCurrentPlaylist(playlistID)
-            console.log("playlist ID taken from local storage", playlistID)
-            // function updatePlaylistCode(ID){
-            //     setCurrentPlaylist(playlistID)
-            //     return playlistID
-            // }
 
-            // updatePlaylistInfo()
         }, [playlistID]
     )
 
@@ -153,7 +156,23 @@ function SpotifySection(props) {
 
                     {/* create a fetch request / axios request to our custom api point to search for and pull playlist data whenever the page renders or the playlist slot on line 25 is changed by hitting next playlist */}
 
-                    {/* {searchPlaylist(playlistCode)} */}
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="card-title">
+                                {(
+                                    (playlist.id === "none") ? (
+                                        <div>
+                                            zero
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            {playlist.id}
+                                        </div>)
+
+                                )}
+                            </div>
+                        </div>
+                    </div>
 
                     <div>
 
