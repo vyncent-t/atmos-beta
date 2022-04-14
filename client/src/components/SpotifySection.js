@@ -162,13 +162,12 @@ function SpotifySection(props) {
                                 {(
                                     (playlist.id === "none") ? (
                                         <div>
-                                            zero
+                                            {playlistID}
                                         </div>
                                     ) : (
                                         <div>
                                             {playlist.id}
                                         </div>)
-
                                 )}
                             </div>
                         </div>
