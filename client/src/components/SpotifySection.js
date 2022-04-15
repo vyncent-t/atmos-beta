@@ -29,14 +29,6 @@ function SpotifySection(props) {
         prevHandler()
     }
 
-    // let playlist = {
-    //     href: "x",
-    //     id: "none",
-    //     image: "y",
-    //     external_url: "z"
-    // }
-
-
 
     const [playlistInfo, setPlaylistInfo] = useState({})
 
@@ -50,19 +42,18 @@ function SpotifySection(props) {
     console.log("CURRENT PLAYLIST", currentPlaylist)
 
 
-    function updatePlaylistInfo({ href, id, images, external_urls }) {
+    function updatePlaylistInfo({ name, description, href, id, images, external_urls,
+        tracks }) {
         setPlaylistInfo(
             () => {
-                // const updatedPlaylist = { ...playlist, ...data }
+                playlistInfo.name = name
+                playlistInfo.description = description
                 playlistInfo.href = href
                 playlistInfo.id = id
                 playlistInfo.image = images[0].url
-                playlistInfo.external_url = external_urls.spotify
+                playlistInfo.external_url = external_urls
+                playlistInfo.tracks = tracks.items
 
-                // playlistInfo.href = data.href
-                // playlistInfo.id = data.id
-                // playlistInfo.image = data.image
-                // playlistInfo.external_url = data.external_url
                 console.log("NEW UPDATE ON PLAYLIST", playlistInfo)
                 return playlistInfo
             }
@@ -75,36 +66,6 @@ function SpotifySection(props) {
     }
 
     // if the playlist is equal to none we set the attributes we want
-
-    // if (playlist.id === "none") {
-    //     axios.post('/spotify-playlist', {
-    //         userData: {
-    //             playlistID: `${playlistID}`,
-    //             accessToken: `${accessToken}`
-    //         }
-    //     }).then(
-    //         (res) => {
-    //             console.log(`music playlist res ID ${playlistID}`, res)
-    //             // the following is printed on the browser console
-    //             console.log(`below is the whole res`)
-    //             // response print from the spotify custom you need to expand in browser console
-    //             console.log(res)
-    //             console.log("THE LINE ABOVE IS THE RES FROM THE SPOTIFY CUSTOM YOU NEED TO EXPAND IT INTO DATA THEN PLAYLISTS")
-    //             // NEED TO FORMAT AS STRING COMMA OBJECT FOR IT TO READ IN CONSOLE
-    //             console.log(`reading music 0 placement playlist res: `, res.data)
-
-    //             // now we will need a way to use the tracks within the playlist located as res.data.tracks.items
-
-    //             let playlistZero = {
-    //                 href: res.data.href,
-    //                 id: res.data.id,
-    //                 image: res.data.images[0].url,
-    //                 external_url: res.data.external_urls.spotify,
-    //             }
-
-    //             return playlistZero
-    //         })
-    // }
 
 
     useEffect(
