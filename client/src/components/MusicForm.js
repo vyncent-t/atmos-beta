@@ -52,6 +52,8 @@ function MusicForm(props) {
                     return playlistCode.id
                 })
                 updateMusicContent(playlistCodes)
+                var playlistZeroID = localStorage.getItem(`musicplaylistcode0`)
+                console.log("playlist zero preload ID: ", playlistZeroID)
             }
         ).catch(
             (error) => {
@@ -82,6 +84,8 @@ function MusicForm(props) {
                     return playlist.id
                 })
                 updateMusicContent(playlistCodes)
+                var playlistZeroID = localStorage.getItem(`musicplaylistcode0`)
+                console.log("playlist zero preload ID: ", playlistZeroID)
             }
         ).catch(
             (error) => {

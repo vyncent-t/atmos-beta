@@ -8,6 +8,8 @@ const axios = require('axios')
 
 function SpotifySection(props) {
 
+    const [isLoading, setIsLoading] = React.useState(true)
+
     // use state in order to select a playlist id from local storage
     const [arrayNum, setArrayNumber] = useState(0)
 
@@ -27,16 +29,16 @@ function SpotifySection(props) {
         prevHandler()
     }
 
-    let playlist = {
-        href: "x",
-        id: "none",
-        image: "y",
-        external_url: "z"
-    }
+    // let playlist = {
+    //     href: "x",
+    //     id: "none",
+    //     image: "y",
+    //     external_url: "z"
+    // }
 
 
 
-    const [playlistInfo, setPlaylistInfo] = useState(playlist)
+    const [playlistInfo, setPlaylistInfo] = useState({})
 
 
     var accessToken = localStorage.getItem("spotifyToken")
@@ -66,38 +68,43 @@ function SpotifySection(props) {
             }
         )
 
-        console.log("SET PLAYLIST IS NOW", playlist)
+        // cheap work around to force the component to rerender, setting the text on the page to is loading then to loading complete / incoming data
+        setIsLoading(true)
+        console.log("SET PLAYLIST IS NOW", playlistInfo)
+        setIsLoading(false)
     }
 
     // if the playlist is equal to none we set the attributes we want
 
-    if (playlist.id === "none") {
-        axios.post('/spotify-playlist', {
-            userData: {
-                playlistID: `${playlistID}`,
-                accessToken: `${accessToken}`
-            }
-        }).then(
-            (res) => {
-                console.log(`music playlist res ID ${playlistID}`, res)
-                // the following is printed on the browser console
-                console.log(`below is the whole res`)
-                // response print from the spotify custom you need to expand in browser console
-                console.log(res)
-                console.log("THE LINE ABOVE IS THE RES FROM THE SPOTIFY CUSTOM YOU NEED TO EXPAND IT INTO DATA THEN PLAYLISTS")
-                // NEED TO FORMAT AS STRING COMMA OBJECT FOR IT TO READ IN CONSOLE
-                console.log(`reading music 0 placement playlist res: `, res.data)
+    // if (playlist.id === "none") {
+    //     axios.post('/spotify-playlist', {
+    //         userData: {
+    //             playlistID: `${playlistID}`,
+    //             accessToken: `${accessToken}`
+    //         }
+    //     }).then(
+    //         (res) => {
+    //             console.log(`music playlist res ID ${playlistID}`, res)
+    //             // the following is printed on the browser console
+    //             console.log(`below is the whole res`)
+    //             // response print from the spotify custom you need to expand in browser console
+    //             console.log(res)
+    //             console.log("THE LINE ABOVE IS THE RES FROM THE SPOTIFY CUSTOM YOU NEED TO EXPAND IT INTO DATA THEN PLAYLISTS")
+    //             // NEED TO FORMAT AS STRING COMMA OBJECT FOR IT TO READ IN CONSOLE
+    //             console.log(`reading music 0 placement playlist res: `, res.data)
 
-                // now we will need a way to use the tracks within the playlist located as res.data.tracks.items
+    //             // now we will need a way to use the tracks within the playlist located as res.data.tracks.items
 
-                playlist.href = res.data.href
-                playlist.id = res.data.id
-                playlist.image = res.data.images[0].url
-                playlist.external_url = res.data.external_urls.spotify
+    //             let playlistZero = {
+    //                 href: res.data.href,
+    //                 id: res.data.id,
+    //                 image: res.data.images[0].url,
+    //                 external_url: res.data.external_urls.spotify,
+    //             }
 
-                return playlist
-            })
-    }
+    //             return playlistZero
+    //         })
+    // }
 
 
     useEffect(
@@ -118,6 +125,8 @@ function SpotifySection(props) {
                 }
             }).then(
                 (res) => {
+                    console.log("setting is loading to false")
+                    setIsLoading(false)
                     console.log(`music playlist res ID ${playlistID}`, res)
                     // the following is printed on the browser console
                     console.log(`below is the whole res`)
@@ -140,21 +149,21 @@ function SpotifySection(props) {
                 }
             ).catch(
                 (error) => {
+                    console.log("setting is loading to false")
+                    setIsLoading(false)
                     console.log(error)
                 }
             )
-
-
-
-
-
         }, [playlistID]
     )
 
 
 
 
-
+    const content = isLoading ?
+        (<div>...is Loading</div>)
+        :
+        (<div> Loading Complete {playlistInfo.href} </div>)
 
 
 
@@ -177,7 +186,7 @@ function SpotifySection(props) {
                         <div className="card-body">
                             <div className="card-title">
                                 <div>
-                                    {playlistInfo.id}
+                                    {content}
                                 </div>
                             </div>
                         </div>
