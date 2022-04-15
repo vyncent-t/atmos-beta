@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 
 import { useState } from "react"
+import PlaylistCard from "./playlistCard";
 
 const axios = require('axios')
 
@@ -124,7 +125,9 @@ function SpotifySection(props) {
     const content = isLoading ?
         (<div>...is Loading</div>)
         :
-        (<div> Loading Complete {playlistInfo.href} </div>)
+        (<div> Loading Complete <PlaylistCard
+            playlistInfo={playlistInfo}
+        /> </div>)
 
 
 

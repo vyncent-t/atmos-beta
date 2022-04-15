@@ -3,10 +3,23 @@
 function PlaylistCard(props) {
 
 
-
     return (
         <div>
-            {props.id}
+            <div>
+                playlist id: {props.playlistInfo.id}
+            </div>
+            <div>
+                playlist name: {props.playlistInfo.name}
+            </div>
+            <div>
+                playlist image: {props.playlistInfo.image}
+            </div>
+            <div>
+                playlist description: {props.playlistInfo.description}
+            </div>
+            <div>
+                playlist href: {props.playlistInfo.href}
+            </div>
         </div>
     )
 }
