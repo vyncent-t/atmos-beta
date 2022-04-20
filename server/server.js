@@ -91,7 +91,7 @@ app.get('/spotify-redirect', (req, res) => {
     // creates a redirect url json object that will be sent to the client and be manually replaced with the window.location.href once the button is clicked on the landing page
 
     res.json({
-        "redirectURL": `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=http://localhost:3000/welcome/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`
+        "redirectURL": `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=http://localhost:3000/welcome/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-read-playback-state%20user-modify-playback-state`
     })
 })
 
@@ -147,7 +147,16 @@ app.post('/spotify-playlist', async (req, res) => {
     }
 })
 
+app.post('/spotify-pause', async (req, res) => {
+    spotifyCustom.speak(5)
 
+    try {
+        console.log("pausing music")
+        res.json(await spotifyCustom.pause(req.body.userData))
+    } catch (err) {
+        res.send(err)
+    }
+})
 
 
 
@@ -203,8 +212,8 @@ app.get('/fruits', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`READING FOR SERVER - ${spotifyClient}`)
-    console.log(`READING FOR SERVER - ${spotifySecret}`)
+    // console.log(`READING FOR SERVER - ${spotifyClient}`)
+    // console.log(`READING FOR SERVER - ${spotifySecret}`)
     console.log(`server listening to port ${PORT}`)
 })
 

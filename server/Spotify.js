@@ -99,7 +99,16 @@ async function selectPlaylists(userData) {
 
 }
 
+async function pauseMusic(userData) {
+    spotifyApi.setAccessToken(userData.accessToken)
 
+    try {
+        spotifyApi.pause()
+    } catch (error) {
+        console.log(error)
+        console.log("spotify error on pause request")
+    }
+}
 
 
 
@@ -120,6 +129,9 @@ const spotifyCustom = {
     playlistSelect: async function (userData) {
         return await selectPlaylists(userData)
     },
+    pause: async function (userData) {
+        return await pauseMusic(userData)
+    }
 
 
 }
