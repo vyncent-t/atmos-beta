@@ -2,7 +2,8 @@
 // import { useSelector } from "react-redux"
 
 import PauseButton from "./pauseButton"
-import SpotifySection from "./SpotifySection"
+import PlayButton from "./playButton"
+import SpotifySection from "./PlaylistSection"
 // import SpotifyWebApi from "spotify-web-api-node"
 
 
@@ -16,7 +17,8 @@ function MusicContent() {
                 <SpotifySection />
                 {/* <iframe title="playlist" src={`https://open.spotify.com/embed/playlist/${musicPlaylist[(currentPlaylist)]}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
 
-                <PauseButton />
+                {/* <PauseButton />
+                <PlayButton /> */}
             </div>
         </div>
     )

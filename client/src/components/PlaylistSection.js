@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect } from "react";
 
 import { useState } from "react"
+import PauseButton from "./pauseButton";
+import PlayButton from "./playButton";
 import PlaylistCard from "./playlistCard";
 
 const axios = require('axios')
 
 
 
-function SpotifySection(props) {
+function PlaylistSection(props) {
 
     const [isLoading, setIsLoading] = React.useState(true)
 
@@ -43,11 +45,12 @@ function SpotifySection(props) {
     console.log("CURRENT PLAYLIST", currentPlaylist)
 
 
-    function updatePlaylistInfo({ name, description, href, id, images, external_urls,
+    function updatePlaylistInfo({ name, uri, description, href, id, images, external_urls,
         tracks }) {
         setPlaylistInfo(
             () => {
                 playlistInfo.name = name
+                playlistInfo.uri = uri
                 playlistInfo.description = description
                 playlistInfo.href = href
                 playlistInfo.id = id
@@ -125,9 +128,10 @@ function SpotifySection(props) {
     const content = isLoading ?
         (<div>...is Loading</div>)
         :
-        (<div> Loading Complete <PlaylistCard
-            playlistInfo={playlistInfo}
-        /> </div>)
+        (<div> Loading Complete
+            <PlaylistCard playlistInfo={playlistInfo} />
+            <PlayButton playlistInfo={playlistInfo} />
+        </div>)
 
 
 
@@ -159,7 +163,7 @@ function SpotifySection(props) {
                     <div>
 
                         {/* create a list of songs component under the album component */}
-
+                        <PauseButton />
                     </div>
 
 
@@ -169,4 +173,4 @@ function SpotifySection(props) {
     )
 }
 
-export default SpotifySection
+export default PlaylistSection

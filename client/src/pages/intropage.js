@@ -39,7 +39,8 @@ function Intropage() {
     function userSpotifyAuthHandler() {
 
         axios.get('/spotify-redirect').then(response => {
-            window.location.href = `${response.data.redirectURL}`
+            console.log(response.data)
+            window.location.href = `${response.data}`
         }).catch(error => {
             console.log(error)
         })

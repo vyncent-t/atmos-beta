@@ -86,13 +86,24 @@ app.use(bodyParser.json())
 
 
 
-app.get('/spotify-redirect', (req, res) => {
+app.get('/spotify-redirect', async (req, res) => {
 
     // creates a redirect url json object that will be sent to the client and be manually replaced with the window.location.href once the button is clicked on the landing page
 
-    res.json({
-        "redirectURL": `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=http://localhost:3000/welcome/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-read-playback-state%20user-modify-playback-state`
-    })
+    // res.json({
+    //     "redirectURL": `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=http://localhost:3000/welcome/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-read-playback-state%20user-modify-playback-state`
+    // })
+
+    spotifyCustom.speak(5)
+
+    try {
+        console.log("redirect load")
+        res.json(await spotifyCustom.redirect())
+    } catch (err) {
+        res.send(err)
+    }
+
+
 })
 
 
@@ -153,6 +164,18 @@ app.post('/spotify-pause', async (req, res) => {
     try {
         console.log("pausing music")
         res.json(await spotifyCustom.pause(req.body.userData))
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+
+app.post('/spotify-play-music', async (req, res) => {
+    spotifyCustom.speak(5)
+
+    try {
+        console.log("playing music")
+        res.json(await spotifyCustom.play(req.body.userData))
     } catch (err) {
         res.send(err)
     }
