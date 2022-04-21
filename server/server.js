@@ -158,6 +158,8 @@ app.post('/spotify-playlist', async (req, res) => {
     }
 })
 
+
+// route to pause music
 app.post('/spotify-pause', async (req, res) => {
     spotifyCustom.speak(5)
 
@@ -168,6 +170,20 @@ app.post('/spotify-pause', async (req, res) => {
         res.send(err)
     }
 })
+
+// route to resume paused music
+app.post('/spotify-resume', async (req, res) => {
+    spotifyCustom.speak(5)
+
+    try {
+        console.log("resume playing music")
+        res.json(await spotifyCustom.resume(req.body.userData))
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+
 
 
 app.post('/spotify-play-music', async (req, res) => {

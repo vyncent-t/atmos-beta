@@ -4,6 +4,7 @@ import { useState } from "react"
 import PauseButton from "./pauseButton";
 import PlayButton from "./playButton";
 import PlaylistCard from "./playlistCard";
+import ResumeButton from "./resumeButton";
 
 const axios = require('axios')
 
@@ -131,6 +132,8 @@ function PlaylistSection(props) {
         (<div> Loading Complete
             <PlaylistCard playlistInfo={playlistInfo} />
             <PlayButton playlistInfo={playlistInfo} />
+            <PauseButton />
+            <ResumeButton />
         </div>)
 
 
@@ -162,8 +165,7 @@ function PlaylistSection(props) {
 
                     <div>
 
-                        {/* create a list of songs component under the album component */}
-                        <PauseButton />
+
                     </div>
 
 

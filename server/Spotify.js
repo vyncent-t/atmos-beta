@@ -135,6 +135,8 @@ async function selectPlaylists(userData) {
 
 }
 
+// basic pause feature
+
 async function pauseMusic(userData) {
     spotifyApi.setAccessToken(userData.accessToken)
 
@@ -143,6 +145,22 @@ async function pauseMusic(userData) {
     } catch (error) {
         console.log(error)
         console.log("spotify error on pause request")
+    }
+}
+
+
+// basic resume feature
+// only to be used on a mapped list of songs with the id being the spotify uri so that it can be passed in as user Data and placed into the spotify api play object
+async function resumeMusic(userData) {
+    spotifyApi.setAccessToken(userData.accessToken)
+    console.log(userData.MusicURI)
+
+
+    try {
+        await spotifyApi.play()
+    } catch (error) {
+        console.log(error)
+        console.log("spotify error on play request")
     }
 }
 
@@ -188,6 +206,9 @@ const spotifyCustom = {
     },
     pause: async function (userData) {
         return await pauseMusic(userData)
+    },
+    resume: async function (userData) {
+        return await resumeMusic(userData)
     },
     play: async function (userData) {
         return await playMusic(userData)
