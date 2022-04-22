@@ -1,25 +1,33 @@
 const axios = require('axios')
 
 
+
+
+// need to rework props so that when song component is made, the song info is passed into the props
+
+// use something like trackInfo={track.uri} on the song component once its finished (or something like that)
 function PlayButton(props) {
 
     let token = localStorage.getItem("spotifyToken")
     console.log("printing from play button")
-    console.log(props.playlistInfo.tracks)
+    // replace props.whatever.we to correct data format
+    console.log(props.songURI)
+    // replace this too
 
-    let musicList = props.playlistInfo.tracks
 
 
     function playButtonHandler() {
 
         console.log("playing music")
-        console.log(musicList)
-        console.log(musicList[0].track.uri)
-        let trackZero = musicList[0].track.uri
+
+        // replace the rest
+        // console.log(musicList)
+        // console.log(musicList[0].track.uri)
+        // let trackZero = musicList[0].track.uri
         axios.post('/spotify-play-music', {
             userData: {
                 accessToken: `${token}`,
-                musicURI: trackZero
+                musicURI: props.songURI
             }
         }).then(
             (res) => {
@@ -40,7 +48,7 @@ function PlayButton(props) {
     return (
 
         <div>
-            <button onClick={playButtonHandler}>{words}</button>
+            <button onClick={playButtonHandler} className="btn btn-info m-3">{words}</button>
         </div>
 
     )

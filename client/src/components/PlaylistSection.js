@@ -5,6 +5,7 @@ import PauseButton from "./pauseButton";
 import PlayButton from "./playButton";
 import PlaylistCard from "./playlistCard";
 import ResumeButton from "./resumeButton";
+import SongSection from "./songSection";
 
 const axios = require('axios')
 
@@ -12,7 +13,7 @@ const axios = require('axios')
 
 function PlaylistSection(props) {
 
-    const [isLoading, setIsLoading] = React.useState(true)
+    const [isLoading, setIsLoading] = useState(true)
 
     // use state in order to select a playlist id from local storage
     const [arrayNum, setArrayNumber] = useState(0)
@@ -131,6 +132,9 @@ function PlaylistSection(props) {
         :
         (<div> Loading Complete
             <PlaylistCard playlistInfo={playlistInfo} />
+            <SongSection playlistInfo={playlistInfo} />
+
+
             <PlayButton playlistInfo={playlistInfo} />
             <PauseButton />
             <ResumeButton />
@@ -140,8 +144,8 @@ function PlaylistSection(props) {
 
     return (
         <Fragment>
-            <div className="d-flex flex-column justify-content-center">
-                <div className="align-self-center mb-4 btn-group">
+            <div className="container">
+                <div >
                     {arrayNum > 0 && <button className="btn btn-outline-light" onClick={prevHandler}>back</button>}
                     {arrayNum < 10 && <button className="btn btn-outline-light" onClick={nextHandler}>next playlist</button>}
                 </div>

@@ -11,9 +11,9 @@ function Dashboard() {
     return (
         <Fragment>
             <AtmosNavbar />
-            <div className="mainpage">
+            <div >
                 <div className={styles.containerdiv}>
-                    <span className="pracmenu">
+                    <span >
                         <VideoContent />
                         <MusicContent />
                     </span>

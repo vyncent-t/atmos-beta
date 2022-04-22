@@ -8,9 +8,10 @@ const QueryString = require('qs');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyCustom = require('./Spotify');
 
-let spotifyClient = process.env.spotify_clientid
-let spotifySecret = process.env.spotify_secret
-let auth_token = Buffer.from(`${spotifyClient}:${spotifySecret}`, 'utf-8').toString('base64');
+// let spotifyClient = process.env.spotify_clientid
+// let spotifySecret = process.env.spotify_secret
+// let auth_token = Buffer.from(`${spotifyClient}:${spotifySecret}`, 'utf-8').toString('base64');
+
 
 
 let PORT = process.env.PORT || 5000
@@ -22,65 +23,9 @@ app.use(bodyParser.json())
 
 
 
+// ************** NOTE ***********************
+// these functions in the route are meant to chained in async so that the response isn't being sent back until the very last endpoint is reached
 
-// const spotifyAuth = async (spotifyCode) => {
-//     console.log("now printing code in axios")
-//     console.log(spotifyCode)
-//     await axios('https://accounts.spotify.com/api/token', {
-//         'method': 'POST',
-//         'headers': {
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//             'Authorization': `Basic ${auth_token}`
-//         },
-//         data: {
-//             'grant_type': "client_credentials",
-//             'code': `${spotifyCode}`,
-//             'redirect_uri': 'http://localhost:3000',
-//         }
-//     }).then(tokenres => {
-//         console.log(tokenres.data.access_token)
-//         return `${tokenres.data.access_token}`
-//     }).catch(error => {
-//         console.log("error in axios")
-//         console.log(error)
-//     })
-// }
-
-// const spotifyAuth = async (spotifyCode) => {
-//     try {
-//         const spotifyURL = 'https://accounts.spotify.com/api/token';
-
-
-//         const dataInit = {
-//             grant_type: "client_credentials",
-//             code: spotifyCode,
-//             redirect_uri: 'http://localhost:3000/',
-//         }
-//         // const data = qs.stringify(dataInit);
-
-
-//         const headers = {
-//             'Authorization': `Basic ${auth_token}`,
-//             'Content-Type': 'application/x-www-form-urlencoded'
-//         }
-
-//         const response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(dataInit), headers).then(
-//             (response) => {
-//                 console.log(response.data.access_token)
-//                 return response.data.access_token
-//             }
-//         ).catch(
-//             (error) => {
-//                 console.log("axios token error")
-//                 console.log(error)
-//             }
-//         )
-
-//     } catch (error) {
-//         console.log(error)
-//         console.log("spotify error")
-//     }
-// }
 
 
 
@@ -108,13 +53,12 @@ app.get('/spotify-redirect', async (req, res) => {
 
 
 // connection route to grab token once page renders from redirect
-
-
+// these functions are chained in async so that the response isn't being sent back until the very last endpoint is reached
 app.post('/spotify-connect', async (req, res) => {
     // console log the code passed in from params on client
     console.log(`reading in server the redirect code ${req.body.code}`)
 
-    // demo object to make sure it works on server console
+    // run this line to make sure the connection is hit
     spotifyCustom.speak(5)
 
     try {
@@ -125,12 +69,12 @@ app.post('/spotify-connect', async (req, res) => {
     }
 })
 
-
+// these functions are chained in async so that the response isn't being sent back until the very last endpoint is reached
 app.post('/spotify-set', async (req, res) => {
     // console log the keyword passed in from client
     console.log(`reading in server the music keyword ${req.body.userData.musicKey}`)
 
-    // demo object to make sure it works on server console
+    // run this line to make sure the connection is hit
     spotifyCustom.speak(5)
 
     try {
@@ -142,12 +86,12 @@ app.post('/spotify-set', async (req, res) => {
 })
 
 
-
+// these functions are chained in async so that the response isn't being sent back until the very last endpoint is reached
 app.post('/spotify-playlist', async (req, res) => {
     // console log the keyword passed in from client
     console.log(`reading in server the music keyword ${req.body.userData.musicKey}`)
 
-    // demo object to make sure it works on server console
+    // run this line to make sure the connection is hit
     spotifyCustom.speak(5)
 
     try {
@@ -160,9 +104,10 @@ app.post('/spotify-playlist', async (req, res) => {
 
 
 // route to pause music
+// these functions are chained in async so that the response isn't being sent back until the very last endpoint is reached
 app.post('/spotify-pause', async (req, res) => {
+    // run this line to make sure the connection is hit
     spotifyCustom.speak(5)
-
     try {
         console.log("pausing music")
         res.json(await spotifyCustom.pause(req.body.userData))
@@ -199,7 +144,7 @@ app.post('/spotify-play-music', async (req, res) => {
 
 
 
-
+// ignore this demo  code
 app.get('/fruits', (req, res) => {
     res.json({
         "fruits": ["apple", "banana", "mango"]
@@ -207,53 +152,9 @@ app.get('/fruits', (req, res) => {
 })
 
 
-// res.json(
-//     () => {
-//         axios('http://accounts.spotify.com/api/token', {
-//             'method': 'POST',
-//             'headers': {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//                 'Authorization': 'Basic' + (Buffer.from(`${spotifyClient}:${spotifySecret}`, 'utf-8').toString('base64'))
-//             },
-//             data: 'grant_type=client_credentials'
-//         }).then(restoken => {
-//             console.log(restoken.data.access.token)
-//             return restoken.data.access.token
-//         })
-//     }
-
-// )
-
-// app.post('http://localhost:5000/refresh', (req, res) => {
-//     const refreshToken = req.body.refreshToken
-//     console.log(refreshToken)
-
-//     const spotifyApi = new SpotifyWebApi({
-//         redirectUri: 'http://localhost:5000',
-//         clientId: `${spotifyClient}`,
-//         clientSecret: `${spotifySecret}`,
-//         refreshToken,
-//     })
-
-//     spotifyApi
-//         .refreshAccessToken()
-//         .then(data => {
-//             res.json({
-//                 accessToken: data.body.access_token,
-//                 expiresIn: data.body.expires_in,
-//             })
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//             res.sendStatus(400)
-//         })
-// })
-
 
 app.listen(PORT, () => {
     // console.log(`READING FOR SERVER - ${spotifyClient}`)
     // console.log(`READING FOR SERVER - ${spotifySecret}`)
     console.log(`server listening to port ${PORT}`)
 })
-
-// nodemon./ server.js localhost 3005

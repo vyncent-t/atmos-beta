@@ -30,7 +30,7 @@ function ResumeButton() {
 
     return (
         <div>
-            <button onClick={resumeButtonHandler}>{words}</button>
+            <button onClick={resumeButtonHandler} className="btn btn-info m-3">{words}</button>
         </div>
     )
 }
