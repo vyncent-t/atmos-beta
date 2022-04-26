@@ -26,42 +26,11 @@ function SongSection(props) {
     // const [musicTracks, setMusicTracks] = useState([])
 
 
-    // if the prop exists, loop through each prop and move it into the tracksArray array
-
-    // if (musicArray) {
-
-    //     setMusicTracks(musicArray.forEach(
-    //         el => setMusicTracks([...musicTracks, el])
-    //     ))
-
-
-    //     console.log("musicTracks")
-    //     console.log(musicTracks)
-    // }
-
-
-    let content = "songList"
-
-    // if (newArray.length > 5) {
-    //     content = "song section okay"
-    // } else {
-    //     content = "song section not broken"
-    // }
-    // console.log("new tracks data from playlist", newArray)
-
-
-    // const content = songsLoading ?
-    //     (<div>...is Loading</div>)
-    //     :
-    //     (<div> Loading Complete
-    //     </div>)
-
-
 
     return (
         <div>
             <div>
-                {content}
+
             </div>
             {/* <MusicControls songList={musicArray} /> */}
             {props.trackList &&
