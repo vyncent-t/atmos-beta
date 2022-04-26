@@ -4,7 +4,13 @@ const axios = require('axios')
 function ResumeButton() {
 
     let token = localStorage.getItem("spotifyToken")
-    console.log("printing from resume button")
+
+
+
+    // **********************
+
+    // console.log("printing from resume button")
+    // **********************
 
     function resumeButtonHandler() {
 
@@ -30,7 +36,7 @@ function ResumeButton() {
 
     return (
         <div>
-            <button onClick={resumeButtonHandler} className="btn btn-info m-3">{words}</button>
+            <button onClick={resumeButtonHandler} className="btn btn-primary m-3">{words}</button>
         </div>
     )
 }

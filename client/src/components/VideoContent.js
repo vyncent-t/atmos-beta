@@ -7,6 +7,8 @@ var getYouTubeID = require('get-youtube-id')
 function VideoContent() {
 
     let totalVideoAvailable = localStorage.getItem("videocodelength")
+
+    // create the next and prev logic for videos
     const [arrayNum, setArrayNumber] = useState(0)
 
     function nextHandler() {

@@ -9,10 +9,15 @@ const axios = require('axios')
 function PlayButton(props) {
 
     let token = localStorage.getItem("spotifyToken")
-    console.log("printing from play button")
+
+
+
+    // **********************
+    // console.log("printing from play button")
     // replace props.whatever.we to correct data format
-    console.log(props.songURI)
+    // console.log(props.songURI)
     // replace this too
+    // **********************
 
 
 

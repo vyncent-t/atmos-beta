@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react"
+import MusicControls from "./musicControls";
 
 import SongCard from "./songCard"
 
@@ -8,50 +9,47 @@ import SongCard from "./songCard"
 function SongSection(props) {
 
 
+    // init the props object entirely
+    let musicInfo = props
+    console.log("props from song section")
+    console.log(musicInfo)
 
-    // const [songsLoading, setSongsLoading] = useState(true)
+    // asign a piece from the object
+    let musicArray = props.trackList
+    console.log("props from track list section array")
+    console.log(musicArray)
 
+    // console.log(musicArray.length)
 
-    // replace props.whatever.we to correct data format
-    // replace this too
-    let musicList = props.playlistInfo.tracks
+    // let arrayTracks = []
 
-    console.log("printing array of tracks in song section")
-    console.log(musicList)
-
-    let tracksArray = []
-
-    if (musicList) {
-        musicList.forEach(
-            el => tracksArray.push(el)
-        )
-        console.log("tracks array")
-        console.log(tracksArray)
-    }
+    // const [musicTracks, setMusicTracks] = useState([])
 
 
+    // if the prop exists, loop through each prop and move it into the tracksArray array
 
-    // const songList = tracksArray.Map(
-    //     (song) => {
-    //         return (
-    //             <div>
-    //                 <SongCard />
-    //             </div>
-    //         )
-    //     }
-    // )
+    // if (musicArray) {
+
+    //     setMusicTracks(musicArray.forEach(
+    //         el => setMusicTracks([...musicTracks, el])
+    //     ))
 
 
-    // cheap work around to force the component to rerender, setting the text on the page to is loading then to loading complete / incoming data
-    // if (musicList.length > 5) {
-    //     setSongsLoading(true)
-    // } else {
-    //     setSongsLoading(false)
+    //     console.log("musicTracks")
+    //     console.log(musicTracks)
     // }
-    console.log("tracks data from playlist", musicList)
 
 
-    const content = "songList"
+    let content = "songList"
+
+    // if (newArray.length > 5) {
+    //     content = "song section okay"
+    // } else {
+    //     content = "song section not broken"
+    // }
+    // console.log("new tracks data from playlist", newArray)
+
+
     // const content = songsLoading ?
     //     (<div>...is Loading</div>)
     //     :
@@ -62,19 +60,25 @@ function SongSection(props) {
 
     return (
         <div>
-            {
-                tracksArray.map(
-                    (song, index) => (
-                        <SongCard
-                            uri={song.track.uri}
-                            name={song.track.name}
-                            // album={song.track.album.name}
-                            artist={song.track.artists[0].name}
-                            id={song.track.id}
-                            href={song.track.href}
-                        />
-                    )
-                )
+            <div>
+                {content}
+            </div>
+            {/* <MusicControls songList={musicArray} /> */}
+            {props.trackList &&
+                <div>
+                    {props.trackList.map(
+                        (song, index) => (
+                            <SongCard
+                                uri={song.track.uri}
+                                name={song.track.name}
+                                // album={song.track.album.name}
+                                artist={song.track.artists[0].name}
+                                id={song.track.id}
+                                href={song.track.href}
+                            />
+                        )
+                    )}
+                </div>
             }
         </div>
     )

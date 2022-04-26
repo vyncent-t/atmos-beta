@@ -174,10 +174,10 @@ async function pauseMusic(userData) {
 // basic resume feature
 async function resumeMusic(userData) {
     spotifyApi.setAccessToken(userData.accessToken)
-    console.log(userData.MusicURI)
 
 
     try {
+        // console.log(userData)
         await spotifyApi.play()
     } catch (error) {
         console.log(error)
@@ -194,10 +194,10 @@ async function playMusic(userData) {
     spotifyApi.setAccessToken(userData.accessToken)
     // console log the tossed in music uri
     console.log("now playing song - now printing song uri")
-    console.log(userData.MusicURI)
 
 
     try {
+        console.log(userData.musicURI)
         await spotifyApi.play({
             uris: [userData.musicURI]
         })

@@ -32,7 +32,7 @@ function PauseButton() {
     return (
 
         <div>
-            <button onClick={pauseButtonHandler} className="btn btn-info m-3">{words}</button>
+            <button onClick={pauseButtonHandler} className="btn btn-primary m-3">{words}</button>
         </div>
 
     )

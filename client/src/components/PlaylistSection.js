@@ -16,62 +16,46 @@ function PlaylistSection(props) {
     const [isLoading, setIsLoading] = useState(true)
 
     // use state in order to select a playlist id from local storage
-    const [arrayNum, setArrayNumber] = useState(0)
+    const [playlistArrayNum, setPlaylistArrayNumber] = useState(0)
 
-    function nextHandler() {
-        setArrayNumber(arrayNum + 1)
+    function nextPlaylistHandler() {
+        setPlaylistArrayNumber(playlistArrayNum + 1)
     }
 
-    function prevHandler() {
-        setArrayNumber(arrayNum - 1)
+    function prevPlaylistHandler() {
+        setPlaylistArrayNumber(playlistArrayNum - 1)
     }
 
-    if (arrayNum < -1) {
-        nextHandler()
+    if (playlistArrayNum < -1) {
+        nextPlaylistHandler()
     }
 
-    if (arrayNum > 10) {
-        prevHandler()
+    if (playlistArrayNum > 10) {
+        prevPlaylistHandler()
     }
 
 
     const [playlistInfo, setPlaylistInfo] = useState({})
 
 
+    let songList = []
+
+
     var accessToken = localStorage.getItem("spotifyToken")
 
-    var playlistID = localStorage.getItem(`musicplaylistcode${arrayNum}`)
+    var playlistID = localStorage.getItem(`musicplaylistcode${playlistArrayNum}`)
     console.log(`current spotify playlist`, playlistID)
 
     const [currentPlaylist, setCurrentPlaylist] = useState(playlistID)
     console.log("CURRENT PLAYLIST", currentPlaylist)
 
 
-    function updatePlaylistInfo({ name, uri, description, href, id, images, external_urls,
-        tracks }) {
-        setPlaylistInfo(
-            () => {
-                playlistInfo.name = name
-                playlistInfo.uri = uri
-                playlistInfo.description = description
-                playlistInfo.href = href
-                playlistInfo.id = id
-                playlistInfo.image = images[0].url
-                playlistInfo.external_url = external_urls
-                playlistInfo.tracks = tracks.items
-
-                console.log("NEW UPDATE ON PLAYLIST", playlistInfo)
-                return playlistInfo
-            }
-        )
-
-        // cheap work around to force the component to rerender, setting the text on the page to is loading then to loading complete / incoming data
-        setIsLoading(true)
-        console.log("SET PLAYLIST IS NOW", playlistInfo)
-        setIsLoading(false)
+    function updateSongList(array) {
+        let songList = array
+        console.log("song array")
+        console.log(songList)
+        return songList
     }
-
-    // if the playlist is equal to none we set the attributes we want
 
 
     useEffect(
@@ -111,7 +95,29 @@ function PlaylistSection(props) {
                     // })
                     // updateMusicContent(playlistCodes)
 
-                    updatePlaylistInfo(res.data)
+                    // updatePlaylistInfo(res.data)
+
+                    setPlaylistInfo(
+                        () => {
+                            playlistInfo.name = res.data.name
+                            playlistInfo.uri = res.data.uri
+                            playlistInfo.description = res.data.description
+                            playlistInfo.href = res.data.href
+                            playlistInfo.id = res.data.id
+                            playlistInfo.image = res.data.images[0].url
+                            playlistInfo.external_url = res.data.external_urls
+                            playlistInfo.tracks = res.data.tracks.items
+
+                            console.log("NEW UPDATE ON PLAYLIST", playlistInfo)
+                            return playlistInfo
+                        }
+                    )
+                    updateSongList(res.data.tracks.items)
+
+                    // cheap work around to force the component to rerender, setting the text on the page to is loading then to loading complete / incoming data
+                    setIsLoading(true)
+                    console.log("SET PLAYLIST IS NOW", playlistInfo)
+                    setIsLoading(false)
 
                 }
             ).catch(
@@ -125,29 +131,19 @@ function PlaylistSection(props) {
     )
 
 
+    // <SongSection songs={playlistInfo.tracks} /> 
 
-
-    const content = isLoading ?
-        (<div>...is Loading</div>)
-        :
-        (<div> Loading Complete
-            <PlaylistCard playlistInfo={playlistInfo} />
-            <SongSection playlistInfo={playlistInfo} />
-
-
-            <PlayButton playlistInfo={playlistInfo} />
-            <PauseButton />
-            <ResumeButton />
-        </div>)
-
+    // <PlaylistCard playlistInfo={playlistInfo} />
+    // <SongSection playlistInfo={playlistInfo} />
+    // <PlayButton playlistInfo={playlistInfo} />  
 
 
     return (
         <Fragment>
             <div className="container">
                 <div >
-                    {arrayNum > 0 && <button className="btn btn-outline-light" onClick={prevHandler}>back</button>}
-                    {arrayNum < 10 && <button className="btn btn-outline-light" onClick={nextHandler}>next playlist</button>}
+                    {playlistArrayNum > 0 && <button className="btn btn-outline-light" onClick={prevPlaylistHandler}>back</button>}
+                    {playlistArrayNum < 10 && <button className="btn btn-outline-light" onClick={nextPlaylistHandler}>next playlist</button>}
                 </div>
 
 
@@ -155,21 +151,25 @@ function PlaylistSection(props) {
 
                 <div>
 
-                    {/* create a fetch request / axios request to our custom api point to search for and pull playlist data whenever the page renders or the playlist slot on line 25 is changed by hitting next playlist */}
 
                     <div className="card">
                         <div className="card-body">
                             <div className="card-title">
                                 <div>
-                                    {content}
+                                    {!isLoading &&
+                                        <div>
+                                            playlist name: {playlistInfo.name}
+                                            <PauseButton />
+                                            <ResumeButton />
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div>
-
-
+                        {!isLoading && <SongSection trackList={playlistInfo.tracks} />}
                     </div>
 
 

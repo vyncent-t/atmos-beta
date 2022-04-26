@@ -6,9 +6,6 @@ import ResumeButton from "./resumeButton"
 
 function SongCard(props) {
 
-
-
-
     return (
         <div className="card" key={props.id}>
             <div className="card-body">
