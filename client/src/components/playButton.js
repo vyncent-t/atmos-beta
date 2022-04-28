@@ -32,7 +32,7 @@ function PlayButton(props) {
         axios.post('/spotify-play-music', {
             userData: {
                 accessToken: `${token}`,
-                musicURI: props.songURI
+                musicURI: props.song
             }
         }).then(
             (res) => {

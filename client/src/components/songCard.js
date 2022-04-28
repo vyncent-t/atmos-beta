@@ -14,7 +14,7 @@ function SongCard(props) {
                 <p className="card-text">artist: {props.artist}</p>
             </div>
             <div>
-                <PlayButton songURI={props.uri} />
+                <PlayButton song={props.uri} />
                 <PauseButton />
                 <ResumeButton />
             </div>

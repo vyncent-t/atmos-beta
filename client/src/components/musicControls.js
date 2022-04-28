@@ -79,32 +79,38 @@ function MusicControls(props) {
 
 
     return (
-        <div className="bg-info m-3 p-3">
-            <div>
-                music controls
-                <div>
-                    <div>
-                        {currentSong ? (<div>
-                            now listening to {currentSong.name}
-                        </div>) :
-                            (<div>Loading...</div>)}
-                    </div>
-                    <div>
-                        {songArrayNum > 0 &&
-                            <button className="btn btn-light" onClick={prevSongHandler}>prev track</button>
-                        }
+        <div>
+            {currentSong ?
+                (
+                    <div className="bg-info m-3 p-3">
+                        <div>
+                            music controls
+                            <div>
+                                <div>
+                                    <div>
+                                        now listening to {currentSong.name} {currentSong.uri}
+                                    </div>
+                                </div>
+                                <div>
+                                    {songArrayNum > 0 &&
+                                        <button className="btn btn-light" onClick={prevSongHandler}>prev track</button>
+                                    }
 
-                        {
-                            songArrayNum < 100 &&
-                            <button className="btn btn-light" onClick={nextSongHandler}>next track</button>
-                        }
+                                    {
+                                        songArrayNum < 100 &&
+                                        <button className="btn btn-light" onClick={nextSongHandler}>next track</button>
+                                    }
+                                </div>
+                                <PlayButton song={currentSong.uri} />
+                                <PauseButton />
+                                <ResumeButton />
+                            </div>
+                        </div>
                     </div>
-                    <PlayButton currentSongCode={"song"} />
-                    <PauseButton />
-                    <ResumeButton />
-                </div>
-            </div>
+                ) :
+                (<div>Loading...</div>)}
         </div>
+
     )
 }
 
