@@ -2,20 +2,11 @@ import PauseButton from "./pauseButton"
 import PlayButton from "./playButton"
 import ResumeButton from "./resumeButton"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 function MusicControls(props) {
 
-
-
-    console.log("print props for music controls")
-
-    console.log(props)
-    let musicArrayList = props.songList
-    let numSongsAvailable = musicArrayList.length
-
-    console.log(`current music control list is ${numSongsAvailable} songs long`)
 
     // next and previous logic for songs
     const [songArrayNum, setSongArrayNumber] = useState(0)
@@ -28,22 +19,63 @@ function MusicControls(props) {
         setSongArrayNumber(songArrayNum - 1)
     }
 
-    let currentSong = musicArrayList[songArrayNum]
+    // let currentSong = musicArrayList[songArrayNum]
+
+    const [currentSongInfo, setCurrentSongInfo] = useState(null)
 
 
-    // const [nowSong, setNowSong] = useState(currentSong)
+    const [currentSong, setCurrentSong] = useState()
+
+
+    console.log("print props for music controls")
+
+    console.log(props)
+
+    let musicArrayList = props.songList
+
+
+    // let currentSong = props.songList[songArrayNum]
+
+    console.log("controls array")
+    console.log(musicArrayList)
+
+    // let numSongsAvailable = musicArrayList.length
+
+    // console.log(`current music control list is ${numSongsAvailable} songs long`)
+
+
+
+    // const [nowSong, setNowSong] = useState("now song")
+
+
+
+    function songMaker(song) {
+        console.log("song maker before setting song")
+        console.log(song)
+        setCurrentSong(
+            () => song
+        )
+        console.log("currentsong after set")
+        console.log(currentSong)
+    }
+
+
+
+    useEffect(
+        () => {
+            if (!props.songList) return
+
+
+            songMaker(props.songList[songArrayNum].track)
+
+            // if (!currentSong.track.name) return
+
+
+        }, [songArrayNum]
+    )
+
 
     console.log("data from current song in song conrols")
-    console.log(currentSong)
-    // console.log(`name of song playing is ${currentSong.track.name}`)
-
-    let content = "none"
-
-    if (!currentSong) {
-        content = "song name broken????"
-    } else {
-        content = "song name not broken"
-    }
 
 
     return (
@@ -52,15 +84,19 @@ function MusicControls(props) {
                 music controls
                 <div>
                     <div>
+                        {currentSong ? (<div>
+                            now listening to {currentSong.name}
+                        </div>) :
+                            (<div>Loading...</div>)}
                     </div>
                     <div>
                         {songArrayNum > 0 &&
-                            <button className="btn btn-outline-light" onClick={prevSongHandler}>prev track</button>
+                            <button className="btn btn-light" onClick={prevSongHandler}>prev track</button>
                         }
 
                         {
-                            songArrayNum < numSongsAvailable - 1 &&
-                            <button className="btn btn-outline-light" onClick={nextSongHandler}>next track</button>
+                            songArrayNum < 100 &&
+                            <button className="btn btn-light" onClick={nextSongHandler}>next track</button>
                         }
                     </div>
                     <PlayButton currentSongCode={"song"} />

@@ -32,7 +32,7 @@ function SongSection(props) {
             <div>
 
             </div>
-            {/* <MusicControls songList={musicArray} /> */}
+            <MusicControls songList={musicArray} />
             {props.trackList &&
                 <div>
                     {props.trackList.map(

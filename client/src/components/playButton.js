@@ -53,7 +53,7 @@ function PlayButton(props) {
     return (
 
         <div>
-            <button onClick={playButtonHandler} className="btn btn-info m-3">{words}</button>
+            <button onClick={playButtonHandler} className="btn btn-primary m-3">{words}</button>
         </div>
 
     )
