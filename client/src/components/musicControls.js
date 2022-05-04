@@ -15,6 +15,9 @@ function MusicControls(props) {
 
     // next and previous logic for songs
     const [songArrayNum, setSongArrayNumber] = useState(0)
+    const [songDuration, setSongDuration] = useState(0)
+    const [musicPlaying, setMusicPlaying] = useState(null)
+    const [musicPlayTime, setMusicPlayTime] = useState(0)
     const [autoPlayOn, setAutoPlayOn] = useState(true)
 
     function nextSongHandler() {
@@ -73,6 +76,7 @@ function MusicControls(props) {
 
 
             playSong(currentSong.uri)
+            setSongDuration((parseInt(currentSong.duration_ms)))
         }, [currentSong]
     )
 
@@ -81,6 +85,7 @@ function MusicControls(props) {
 
 
     function playSong(songCode) {
+        setMusicPlaying(true)
         axios.post('/spotify-play-music', {
             userData: {
                 accessToken: `${token}`,
@@ -98,12 +103,54 @@ function MusicControls(props) {
         )
     }
 
+    function pauseSong() {
+        setMusicPlaying(false)
+        // when the button is pressed, statement prints, token is set to a property on the userData object to be passed in to the proper route
+        console.log("pausing music")
+        axios.post('/spotify-pause', {
+            userData: {
+                accessToken: `${token}`
+            }
+        }).then(
+            (res) => {
+                console.log("pause worked")
+                console.log(res)
+            }
+        ).catch(
+            (err) => {
+                console.log(err)
+            }
+        )
+    }
+
+    function resumeSong() {
+        setMusicPlaying(true)
+        console.log("resume music")
+        axios.post('/spotify-resume', {
+            userData: {
+                accessToken: `${token}`,
+            }
+        }).then(
+            (res) => {
+                console.log("resume worked")
+                console.log(res)
+            }
+        ).catch(
+            (err) => {
+                console.log(err)
+            }
+        )
+    }
+
+
     function autoPlayOnHandler(song) {
+        console.log("auto play now on")
         setAutoPlayOn(true)
         playSong(song)
     }
 
     function autoPlayOffHandler(song) {
+        console.log("auto play now off")
         setAutoPlayOn(false)
         // playSong(song)
     }
@@ -115,6 +162,32 @@ function MusicControls(props) {
         setSongArrayNumber(event.target.value)
         console.log(songArrayNum)
     }
+
+
+    useEffect(
+        () => {
+            let interval = null
+            if (musicPlaying) {
+                interval = setInterval(() => {
+                    setMusicPlayTime(musicPlayTime + 5000)
+                }, 5000)
+
+                if ((musicPlayTime > songDuration) && autoPlayOn) {
+                    // reset the playtime to 0 for new song
+                    setMusicPlayTime(0)
+
+                    console.log("next song playing from auto play")
+                    let nextSong = parseInt(songArrayNum) + 1
+                    setSongArrayNumber(nextSong)
+                }
+            } else {
+                console.log("no music playing")
+            }
+
+            return () => { clearInterval(interval) }
+        }, [musicPlayTime, musicPlaying, songDuration, autoPlayOn, songArrayNum]
+    )
+
 
 
 
@@ -154,12 +227,28 @@ function MusicControls(props) {
                                     }
                                 </div>
 
+                                {musicPlaying && <div>PLAYING MUSIC</div>}
+                                {!musicPlaying && <div>NO MUSIC</div>}
+
                                 <div>
-                                    {songArrayNum}
+                                    current place in array {songArrayNum}
+                                </div>
+                                <div>
+                                    current song duration {songDuration}
+                                </div>
+                                <div>
+                                    current song play time {musicPlayTime}
+                                </div>
+
+                                <div>
+                                    <button className="m-1 btn btn-light" onClick={() => { pauseSong() }}>Pause</button>
+                                </div>
+                                <div>
+                                    <button className="m-1 btn btn-light" onClick={() => { resumeSong() }}>Resume</button>
                                 </div>
                                 {/* <PlayButton song={currentSong.uri} /> */}
-                                <PauseButton />
-                                <ResumeButton />
+                                {/* <PauseButton /> */}
+                                {/* <ResumeButton /> */}
                             </div>
                         </div>
                         {musicArrayList &&
