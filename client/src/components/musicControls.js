@@ -3,6 +3,8 @@ import PlayButton from "./playButton"
 import ResumeButton from "./resumeButton"
 
 import { useEffect, useState } from "react"
+import SongCard from "./songCard"
+
 
 
 const axios = require('axios')
@@ -16,11 +18,14 @@ function MusicControls(props) {
     const [autoPlayOn, setAutoPlayOn] = useState(true)
 
     function nextSongHandler() {
-        setSongArrayNumber(songArrayNum + 1)
+        let nextSong = parseInt(songArrayNum) + 1
+        setSongArrayNumber(nextSong)
     }
 
     function prevSongHandler() {
-        setSongArrayNumber(songArrayNum - 1)
+        let lastSong = parseInt(songArrayNum) - 1
+
+        setSongArrayNumber(lastSong)
     }
 
     const [currentSongInfo, setCurrentSongInfo] = useState(null)
@@ -103,6 +108,14 @@ function MusicControls(props) {
         // playSong(song)
     }
 
+    function songArrayHandle(event) {
+        console.log(`now printing for array placement ${event.target.value
+            }`)
+
+        setSongArrayNumber(event.target.value)
+        console.log(songArrayNum)
+    }
+
 
 
     return (
@@ -118,8 +131,7 @@ function MusicControls(props) {
                                         autoPlayOn ? (
                                             <div>
                                                 <button className="btn btn-success" onClick={
-                                                    () => { autoPlayOffHandler() }
-                                                } >Disable Auto Play</button>
+                                                    autoPlayOffHandler} >Disable Auto Play</button>
                                             </div>
                                         ) : <div>
                                             <button className="btn btn-success" onClick={
@@ -141,11 +153,38 @@ function MusicControls(props) {
                                         <button className="btn btn-light m-1" onClick={nextSongHandler}>next track</button>
                                     }
                                 </div>
+
+                                <div>
+                                    {songArrayNum}
+                                </div>
                                 {/* <PlayButton song={currentSong.uri} /> */}
                                 <PauseButton />
                                 <ResumeButton />
                             </div>
                         </div>
+                        {musicArrayList &&
+                            <div>
+                                {musicArrayList.map(
+                                    (song, index) => (
+                                        <div>
+                                            <SongCard
+                                                place={index}
+                                                arrayNum={songArrayNum}
+                                                uri={song.track.uri}
+                                                name={song.track.name}
+                                                // album={song.track.album.name}
+                                                artist={song.track.artists[0].name}
+                                                id={song.track.id}
+                                                href={song.track.href}
+                                            />
+                                            <span>
+                                                <button className="btn btn-primary" value={index} onClick={songArrayHandle}>Play</button>
+                                            </span>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        }
                     </div>
                 ) :
                 (<div>Loading...</div>)}

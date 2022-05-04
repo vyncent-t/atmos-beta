@@ -33,7 +33,7 @@ function SongSection(props) {
 
             </div>
             <MusicControls songList={musicArray} />
-            {props.trackList &&
+            {/* {props.trackList &&
                 <div>
                     {props.trackList.map(
                         (song, index) => (
@@ -48,7 +48,7 @@ function SongSection(props) {
                         )
                     )}
                 </div>
-            }
+            } */}
         </div>
     )
 }
