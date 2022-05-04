@@ -142,6 +142,15 @@ app.post('/spotify-play-music', async (req, res) => {
     }
 })
 
+app.post('/spotify-control-audio', async (req, res) => {
+
+    try {
+        console.log("changing audio levels")
+        res.json(await spotifyCustom.sound(req.body.userData))
+    } catch (err) {
+        res.send(err)
+    }
+})
 
 
 // ignore this demo  code

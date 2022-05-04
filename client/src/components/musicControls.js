@@ -4,6 +4,7 @@ import ResumeButton from "./resumeButton"
 
 import { useEffect, useState } from "react"
 import SongCard from "./songCard"
+import Soundbar from "./soundBar"
 
 
 
@@ -174,7 +175,7 @@ function MusicControls(props) {
                     setMusicPlayTime(musicPlayTime + 5000)
                 }, 5000)
 
-                if ((musicPlayTime > songDuration) && autoPlayOn) {
+                if ((musicPlayTime >= songDuration) && autoPlayOn) {
                     // reset the playtime to 0 for new song
                     setMusicPlayTime(0)
 
@@ -251,13 +252,11 @@ function MusicControls(props) {
 
                                 <div>
                                     <button className="m-1 btn btn-light" onClick={() => { pauseSong() }}>Pause</button>
-                                </div>
-                                <div>
                                     <button className="m-1 btn btn-light" onClick={() => { resumeSong() }}>Resume</button>
                                 </div>
-                                {/* <PlayButton song={currentSong.uri} /> */}
-                                {/* <PauseButton /> */}
-                                {/* <ResumeButton /> */}
+                                <div>
+                                    <Soundbar />
+                                </div>
                             </div>
                         </div>
                         {musicArrayList &&

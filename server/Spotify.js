@@ -209,6 +209,22 @@ async function playMusic(userData) {
 
 
 
+async function audioLevel(userData) {
+    spotifyApi.setAccessToken(userData.accessToken)
+    try {
+        console.log(`now setting audio level to ${userData.level}`)
+        await spotifyApi.setVolume(userData.level)
+    } catch (error) {
+        console.log(error)
+        console.log("spotify error on volume control")
+    }
+}
+
+
+
+
+
+
 // ************* NOTE *************
 // THE CUSTOM TOOL NEEDS TO RUN EVERY FUNCTION AS ASYNC ALSO
 // THIS ENSURES THAT THE END FUNCTION WILL BE AWAITED IN ORDER TO RETURN THE DESIRED RESPONSE
@@ -250,6 +266,10 @@ const spotifyCustom = {
     play: async function (userData) {
         return await playMusic(userData)
     },
+    // set audio levels
+    sound: async function (userData) {
+        return await audioLevel(userData)
+    }
 
 
 
