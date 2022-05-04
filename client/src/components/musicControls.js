@@ -77,6 +77,8 @@ function MusicControls(props) {
 
             playSong(currentSong.uri)
             setSongDuration((parseInt(currentSong.duration_ms)))
+            // reset the playtime to 0 for new song
+            setMusicPlayTime(0)
         }, [currentSong]
     )
 
@@ -180,6 +182,13 @@ function MusicControls(props) {
                     let nextSong = parseInt(songArrayNum) + 1
                     setSongArrayNumber(nextSong)
                 }
+
+                if ((musicPlayTime > songDuration) && !autoPlayOn) {
+                    // set song to complete time
+                    setMusicPlayTime(songDuration)
+                }
+
+
             } else {
                 console.log("no music playing")
             }
