@@ -3,7 +3,7 @@ const axios = require('axios')
 
 
 
-function Soundbar(props) {
+function Soundbar() {
     let token = localStorage.getItem("spotifyToken")
 
 
@@ -24,7 +24,7 @@ function Soundbar(props) {
                     }
                 }).then(
                     (res) => {
-                        console.log("volume set")
+                        console.log(`volume set ${songAudioLevel}`)
                         console.log(res)
                     }
                 ).catch(
@@ -42,14 +42,16 @@ function Soundbar(props) {
         <div>
             <div >
                 <button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel - songAudioLevel) }}>mute</button>
-                <button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >
-                <button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>
+
+                {(songAudioLevel > 0) ? (<button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >) : (<button className="m-1 btn btn-light disabled" onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >)}
+
+                {(songAudioLevel < 100) ? (<button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>) : (<button className="m-1 btn btn-light disabled" onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>)}
             </div >
-            <div>
+            <div className="w-25">
                 <label for="musicAudio" className="form-label">Speaker {songAudioLevel}</label>
                 <input
                     type="range"
-                    className="m-1 btn btn-light"
+                    className="form-range"
                     onChange={volumeControl}
                     id="musicAudio"
                     value={songAudioLevel}
@@ -61,5 +63,5 @@ function Soundbar(props) {
         </div>
     )
 }
-
+                    
 export default Soundbar
