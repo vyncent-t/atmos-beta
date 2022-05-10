@@ -37,6 +37,76 @@ const initialYoutubeState = {
             "https://www.youtube.com/watch?v=ADt_RisXY0U",
             "https://www.youtube.com/watch?v=V_vj7BMawAI"
         ],
+        Cars: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Planes: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Trains: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Camping: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Aquarium: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Fantasy: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Space: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Christmas: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        DND: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
+        Focus: [
+            "https://www.youtube.com/watch?v=ixr0Plq0T2M",
+            "https://www.youtube.com/watch?v=vemLEwjIxow",
+            "https://www.youtube.com/watch?v=iXQ4AyyJSEk",
+            "https://www.youtube.com/watch?v=rZ_LHofPEEs",
+            "https://www.youtube.com/watch?v=n3PmzEVZWvc"
+        ],
     },
     currentChoice: null,
 
