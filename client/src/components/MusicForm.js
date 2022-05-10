@@ -102,20 +102,18 @@ function MusicForm(props) {
                     <MusicButton musicKeyword="Coffee Shop" />
                     <MusicButton musicKeyword="Acoustic" />
                     <MusicButton musicKeyword="Lofi" />
-                    <MusicButton musicKeyword="Yoga" />
-
-
-                    <MusicButton musicKeyword="Piano" />
-                    <MusicButton musicKeyword="Coffee Shop" />
-                    <MusicButton musicKeyword="Acoustic" />
-                    <MusicButton musicKeyword="Lofi" />
-                    <MusicButton musicKeyword="Yoga" />
-
-                    <MusicButton musicKeyword="Piano" />
-                    <MusicButton musicKeyword="Coffee Shop" />
-                    <MusicButton musicKeyword="Acoustic" />
-                    <MusicButton musicKeyword="Lofi" />
-                    <MusicButton musicKeyword="Yoga" />
+                    <MusicButton musicKeyword="Vaperwave" />
+                    <MusicButton musicKeyword="Classical" />
+                    <MusicButton musicKeyword="Jazz" />
+                    <MusicButton musicKeyword="Trance" />
+                    <MusicButton musicKeyword="Folk" />
+                    <MusicButton musicKeyword="Cooking" />
+                    <MusicButton musicKeyword="Christmas" />
+                    <MusicButton musicKeyword="Fantasy" />
+                    <MusicButton musicKeyword="Anime" />
+                    <MusicButton musicKeyword="Video Game" />
+                    <MusicButton musicKeyword="Dungeons and dragons" />
+                    <MusicButton musicKeyword="Focus" />
                 </div>
             </div>
         </div>

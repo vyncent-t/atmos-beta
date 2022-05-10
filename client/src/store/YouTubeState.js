@@ -9,7 +9,6 @@ const initialYoutubeState = {
             "https://www.youtube.com/watch?v=UyZfCrrdbm8",
             "https://www.youtube.com/watch?v=Xn8tufsbSz0"
         ],
-
         Waterfall: [
             "https://www.youtube.com/watch?v=ixr0Plq0T2M",
             "https://www.youtube.com/watch?v=vemLEwjIxow",
