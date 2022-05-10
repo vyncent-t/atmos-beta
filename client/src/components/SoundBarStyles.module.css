@@ -7,6 +7,11 @@
 	margin: 0em 1em;
 }
 
+.audio_button_box {
+	display: flex;
+	flex-direction: row;
+}
+
 .disabled_button {
 	pointer-events: none;
 	color: #ccc;

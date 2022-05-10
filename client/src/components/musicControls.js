@@ -302,31 +302,35 @@ function MusicControls(props) {
                             </div>
                         </div>
 
-                        <div className={styles.song_container}>
-                            {musicArrayList &&
-                                <div className={styles.song_list}>
-                                    {musicArrayList.map(
-                                        (song, index) => (
-                                            <div className={styles.song_item}>
-                                                <SongCard
-                                                    place={index}
-                                                    arrayNum={songArrayNum}
-                                                    uri={song.track.uri}
-                                                    name={song.track.name}
-                                                    // album={song.track.album.name}
-                                                    artist={song.track.artists[0].name}
-                                                    id={song.track.id}
-                                                    href={song.track.href}
-                                                />
-                                                <div>
-                                                    <button className={styles.control_button} value={index} onClick={songArrayHandle}>Play</button>
+                        <div className={styles.song_section}>
+                            <div className={styles.song_container}>
+                                <h3>Tracks</h3>
+                                {musicArrayList &&
+                                    <div className={styles.song_list}>
+                                        {musicArrayList.map(
+                                            (song, index) => (
+                                                <div className={styles.song_item}>
+                                                    <SongCard
+                                                        place={index}
+                                                        arrayNum={songArrayNum}
+                                                        uri={song.track.uri}
+                                                        name={song.track.name}
+                                                        // album={song.track.album.name}
+                                                        artist={song.track.artists[0].name}
+                                                        id={song.track.id}
+                                                        href={song.track.href}
+                                                    />
+                                                    <div>
+                                                        <button className={styles.control_button} value={index} onClick={songArrayHandle}>Play</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )
-                                    )}
-                                </div>
-                            }
+                                            )
+                                        )}
+                                    </div>
+                                }
+                            </div>
                         </div>
+
                     </div>
                 ) :
                 (<div>Loading...</div>)}

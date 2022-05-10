@@ -22,7 +22,7 @@ function SongCard(props) {
 
     return (
         <div className={styles.sound_card} key={props.id}>
-            <div>
+            <div className={styles.song_name}>
                 <p>{props.name}</p>
             </div>
             <div className={styles.song_artist}>

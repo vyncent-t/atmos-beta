@@ -6,7 +6,6 @@
 	color: white;
 	border: 2px solid white;
 	border-radius: 1em;
-	margin: 1em 0em;
 }
 
 .music_controls div {
@@ -83,14 +82,21 @@
 	align-items: center;
 }
 
-.song_container {
+.song_section {
 	height: 500px;
-	overflow: hidden;
-	overflow-y: scroll;
 	color: white;
 	background-color: rgb(45, 45, 71);
 	border: 2px solid white;
 	border-radius: 1em;
+	margin: 1em 0em;
+	padding: 1em;
+}
+.song_container {
+	overflow: hidden;
+	overflow-y: scroll;
+	height: 100%;
+	color: white;
+	padding: 1em;
 }
 .song_list {
 	display: flex;

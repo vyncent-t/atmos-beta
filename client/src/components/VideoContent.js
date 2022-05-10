@@ -1,6 +1,6 @@
 import { useState } from "react"
 import YouTube from "react-youtube"
-import styles from './MainMenuStyles.module.css'
+import styles from "./VideoContentStyles.module.css"
 
 var getYouTubeID = require('get-youtube-id')
 
@@ -19,6 +19,12 @@ function VideoContent() {
         setArrayNumber(arrayNum - 1)
     }
 
+
+    const [youtubeWidth, setYoutubeWidth] = useState((document.documentElement.clientWidth - 200))
+    const [youtubeHeight, setYoutubeHeight] = useState((document.documentElement.clientHeight - 200))
+
+
+
     function onReady(e) {
         // access to player in all event handlers via event.target
         e.target.playVideo();
@@ -34,9 +40,15 @@ function VideoContent() {
         nextHandler()
     }
 
+    console.log("window size " + document.documentElement.clientWidth)
+    console.log("window size " + document.documentElement.clientHeight)
+
+    // var youtubeWidth = document.documentElement.clientWidth - 200
+    // var youtubeHeight = document.documentElement.clientHeight - 200
+
     const opts = {
-        height: '520',
-        width: '1080',
+        height: `${youtubeHeight}`,
+        width: `${youtubeWidth}`,
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
@@ -44,15 +56,16 @@ function VideoContent() {
         },
     }
 
+
     return (
-        <div className="card bg-dark m-4 rounded ">
+        <div className={styles.video_content}>
             {/* <p>current array item: {arrayNum}</p>
             <p>current array length: {youtubeArray.length}</p>
             <p>{youtubeArray[0]}</p> */}
-            <div className="card-body bg-dark mx-5 d-flex justify-content-center btn-group">
+            <div >
                 <div >
-                    {arrayNum > 0 && <button className="btn btn-outline-light" onClick={prevHandler}>back</button>}
-                    {arrayNum < totalVideoAvailable - 1 && <button className="btn btn-outline-light" onClick={nextHandler}>next video</button>}
+                    {arrayNum > 0 && <button className={styles.video_button} onClick={prevHandler}>back</button>}
+                    {arrayNum < totalVideoAvailable - 1 && <button className={styles.video_button} onClick={nextHandler}>next video</button>}
                 </div>
             </div>
             <div>

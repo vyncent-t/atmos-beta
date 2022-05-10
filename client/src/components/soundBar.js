@@ -44,7 +44,7 @@ function Soundbar() {
 
     return (
         <div>
-            <div >
+            <div className={styles.audio_button_box}>
                 <button className={styles.audio_button} onClick={() => { setAudioLevel(songAudioLevel - songAudioLevel) }}>mute</button>
 
                 {(songAudioLevel > 0) ? (<button className={styles.audio_button} onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >) : (<button className={styles.disabled_button} onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >)}
