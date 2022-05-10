@@ -1,9 +1,5 @@
-import React, { Fragment, useEffect } from "react";
-import { useState } from "react"
 import MusicControls from "./MusicControls";
-
-import SongCard from "./SongCard"
-
+import styles from "./SongSectionStyles.module.css"
 
 
 function SongSection(props) {
@@ -19,16 +15,10 @@ function SongSection(props) {
     console.log("props from track list section array")
     console.log(musicArray)
 
-    // console.log(musicArray.length)
-
-    // let arrayTracks = []
-
-    // const [musicTracks, setMusicTracks] = useState([])
-
 
 
     return (
-        <div className="bg-success m-2 p-2 rounded">
+        <div className={styles.song_section}>
             <div>
 
             </div>

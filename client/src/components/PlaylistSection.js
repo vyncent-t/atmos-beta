@@ -133,30 +133,29 @@ function PlaylistSection(props) {
 
     return (
         <Fragment>
-            <div className={styles.playlist_section}>
-                {!isLoading && (<div className={styles.playlist_card}>
-                    <div className={styles.playlist_image}>
+            {isLoading && <div>Loading...</div>}
+            {!isLoading &&
+                <div className={styles.playlist_section}>
+                    <div className={styles.playlist_card}>
+                        <div className={styles.playlist_image}>
+                            <img src={playlistInfo.image} alt="playlist graphic" />
+                        </div>
                         <div className={styles.playlist_info}>
                             <div>
                                 <h2 className={styles.playlist_title}>Current Playlist {playlistArrayNum}</h2>
-                                <div>{playlistInfo.name}</div>
+                                <h3>{playlistInfo.name}</h3>
                             </div>
-
                             <div className={styles.playlist_button_box}>
                                 {(playlistArrayNum > 0) && <button className={styles.playlist_button} onClick={prevPlaylistHandler}>prev playlist</button>}
                                 {(playlistArrayNum < 9) && <button className={styles.playlist_button} onClick={nextPlaylistHandler}>next playlist</button>}
                             </div>
                         </div>
-                        <img src={playlistInfo.image} alt="playlist graphic" />
                     </div>
-                </div>)
-                }
-
-
-                <div>
-                    {!isLoading && <SongSection trackList={playlistInfo.tracks} />}
+                    <div className={styles.playlist_song_section}>
+                        {!isLoading && <SongSection trackList={playlistInfo.tracks} />}
+                    </div>
                 </div>
-            </div>
+            }
         </Fragment>
     )
 }
