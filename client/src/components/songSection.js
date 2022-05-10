@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react"
-import MusicControls from "./musicControls";
+import MusicControls from "./MusicControls";
 
-import SongCard from "./songCard"
+import SongCard from "./SongCard"
 
 
 
@@ -28,7 +28,7 @@ function SongSection(props) {
 
 
     return (
-        <div>
+        <div className="bg-success m-2 p-2 rounded">
             <div>
 
             </div>

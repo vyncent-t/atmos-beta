@@ -6,15 +6,9 @@ const axios = require('axios')
 
 
 function MusicForm(props) {
-    var musicid = useSelector((state) => state.spotify.clientid)
     const musicToken = localStorage.getItem("spotifyToken")
     console.log(`need the normal music token ${musicToken}`)
     const musicChoice = useSelector((state) => state.content.musicButtonChoice)
-
-    console.log(`reading ON MUSIC ID FROM STATE ${musicid}`)
-
-
-
 
     // this function will be ran within the promise of each api req below, it will take the entire response object and select the first 10 playlist items to be saved in local storage
 
@@ -63,7 +57,7 @@ function MusicForm(props) {
     } else {
         axios.post('/spotify-set', {
             userData: {
-                musicKey: `${musicChoice}`,
+                musicKey: `relax ${musicChoice}`,
                 accessToken: `${musicToken}`
             }
         }).then(

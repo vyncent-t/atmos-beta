@@ -1,6 +1,6 @@
-import PauseButton from "./pauseButton"
-import PlayButton from "./playButton"
-import ResumeButton from "./resumeButton"
+import PauseButton from "./PauseButton"
+import PlayButton from "./PlayButton"
+import ResumeButton from "./ResumeButton"
 
 import { useEffect, useState } from "react"
 

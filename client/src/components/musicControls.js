@@ -1,10 +1,11 @@
-import PauseButton from "./pauseButton"
-import PlayButton from "./playButton"
-import ResumeButton from "./resumeButton"
+import PauseButton from "./PauseButton"
+import PlayButton from "./PlayButton"
+import ResumeButton from "./ResumeButton"
 
 import { useEffect, useState } from "react"
-import SongCard from "./songCard"
-import Soundbar from "./soundBar"
+import SongCard from "./SongCard"
+import Soundbar from "./SoundBar"
+import styles from './MusicControlStyles.module.css'
 
 
 
@@ -20,6 +21,8 @@ function MusicControls(props) {
     const [musicPlaying, setMusicPlaying] = useState(null)
     const [musicPlayTime, setMusicPlayTime] = useState(0)
     const [autoPlayOn, setAutoPlayOn] = useState(true)
+    const [randomOn, setRandomOn] = useState(false)
+    const [repeatOn, setRepeatOn] = useState(false)
 
     function nextSongHandler() {
         let nextSong = parseInt(songArrayNum) + 1
@@ -31,6 +34,18 @@ function MusicControls(props) {
 
         setSongArrayNumber(lastSong)
     }
+
+
+    function randomToggler() {
+        setRandomOn(!randomOn)
+    }
+
+
+    function repeatToggler() {
+        setRepeatOn(!repeatOn)
+    }
+
+
 
     const [currentSongInfo, setCurrentSongInfo] = useState(null)
 
@@ -65,8 +80,6 @@ function MusicControls(props) {
     useEffect(
         () => {
             if (!props.songList) return
-
-
             songMaker(props.songList[songArrayNum].track)
         }, [songArrayNum]
     )
@@ -74,8 +87,6 @@ function MusicControls(props) {
     useEffect(
         () => {
             if (!currentSong) return
-
-
             playSong(currentSong.uri)
             setSongDuration((parseInt(currentSong.duration_ms)))
             // reset the playtime to 0 for new song
@@ -188,45 +199,56 @@ function MusicControls(props) {
                     // set song to complete time
                     setMusicPlayTime(songDuration)
                 }
-
-
             } else {
                 console.log("no music playing")
             }
-
             return () => { clearInterval(interval) }
         }, [musicPlayTime, musicPlaying, songDuration, autoPlayOn, songArrayNum]
     )
 
 
+    useEffect(
+        () => {
+            if (repeatOn) {
+                if (musicPlayTime > songDuration) {
+                    playSong(currentSong.uri)
+                    setSongDuration((parseInt(currentSong.duration_ms)))
+                    // reset the playtime to 0 for new song
+                    setMusicPlayTime(0)
+                }
+            }
+        }, [currentSong, repeatOn, musicPlayTime, songDuration]
+    )
 
 
     return (
         <div>
             {currentSong ?
                 (
-                    <div className="bg-info m-3 p-3">
+                    <div className="rounded m-3 p-3">
                         <div>
-                            music controls
-                            <div>
-                                <div>
-                                    {
-                                        autoPlayOn ? (
-                                            <div>
-                                                <button className="btn btn-success" onClick={
-                                                    autoPlayOffHandler} >Disable Auto Play</button>
-                                            </div>
-                                        ) : <div>
-                                            <button className="btn btn-success" onClick={
-                                                () => { autoPlayOnHandler(currentSong.uri) }
-                                            }>Enable Auto Play</button>
-                                        </div>
-                                    }
+                            <h1>music controls</h1>
+                            <div className={styles.music_controls}>
+                                <div >
                                     <div>
                                         now listening to {currentSong.name} {currentSong.uri}
                                     </div>
+                                    <div >
+                                        {
+                                            autoPlayOn ? (
+                                                <div>
+                                                    <button className="btn btn-success" onClick={
+                                                        autoPlayOffHandler} >Disable Auto Play</button>
+                                                </div>
+                                            ) : <div>
+                                                <button className="btn btn-success" onClick={
+                                                    () => { autoPlayOnHandler(currentSong.uri) }
+                                                }>Enable Auto Play</button>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
-                                <div>
+                                <div >
                                     {songArrayNum > 0 &&
                                         <button className="btn btn-light m-1" onClick={prevSongHandler}>prev track</button>
                                     }
@@ -237,17 +259,19 @@ function MusicControls(props) {
                                     }
                                 </div>
 
-                                {musicPlaying && <div>PLAYING MUSIC</div>}
-                                {!musicPlaying && <div>NO MUSIC</div>}
 
-                                <div>
-                                    current place in array {songArrayNum}
-                                </div>
-                                <div>
-                                    current song duration {songDuration}
-                                </div>
-                                <div>
-                                    current song play time {musicPlayTime}
+                                <div >
+                                    {musicPlaying && <div>PLAYING MUSIC</div>}
+                                    {!musicPlaying && <div>NO MUSIC</div>}
+                                    <div>
+                                        current place in array {songArrayNum}
+                                    </div>
+                                    <div>
+                                        current song duration {songDuration}
+                                    </div>
+                                    <div>
+                                        current song play time {musicPlayTime}
+                                    </div>
                                 </div>
 
                                 <div>

@@ -1,0 +1,17 @@
+.music_controls {
+	display: flexbox;
+	flex-direction: wrap;
+	justify-content: center;
+	background-color: rgb(6, 6, 57);
+	color: white;
+	padding: 1em;
+	border: 2px solid white;
+	border-radius: 1em;
+	margin: 1em 0em;
+}
+
+.music_controls div {
+	width: auto;
+	background-color: rgb(61, 60, 60);
+	margin: 1em;
+}

@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 
 import { useState } from "react"
-import PauseButton from "./pauseButton";
-import PlayButton from "./playButton";
-import PlaylistCard from "./playlistCard";
-import ResumeButton from "./resumeButton";
-import SongSection from "./songSection";
+import SongSection from "./SongSection";
+
+import styles from "./PlaylistSectionStyles.module.css"
 
 const axios = require('axios')
 
@@ -26,13 +24,13 @@ function PlaylistSection(props) {
         setPlaylistArrayNumber(playlistArrayNum - 1)
     }
 
-    if (playlistArrayNum < -1) {
-        nextPlaylistHandler()
-    }
+    // if (playlistArrayNum < -1) {
+    //     nextPlaylistHandler()
+    // }
 
-    if (playlistArrayNum > 10) {
-        prevPlaylistHandler()
-    }
+    // if (playlistArrayNum > 10) {
+    //     prevPlaylistHandler()
+    // }
 
 
     const [playlistInfo, setPlaylistInfo] = useState({})
@@ -131,48 +129,32 @@ function PlaylistSection(props) {
     )
 
 
-    // <SongSection songs={playlistInfo.tracks} /> 
-
-    // <PlaylistCard playlistInfo={playlistInfo} />
-    // <SongSection playlistInfo={playlistInfo} />
-    // <PlayButton playlistInfo={playlistInfo} />  
 
 
     return (
         <Fragment>
-            <div className="container">
-                <div >
-                    {playlistArrayNum > 0 && <button className="btn btn-outline-light" onClick={prevPlaylistHandler}>back</button>}
-                    {playlistArrayNum < 10 && <button className="btn btn-outline-light" onClick={nextPlaylistHandler}>next playlist</button>}
-                </div>
+            <div className={styles.playlist_section}>
+                {!isLoading && (<div className={styles.playlist_card}>
+                    <div className={styles.playlist_image}>
+                        <div className={styles.playlist_info}>
+                            <div>
+                                <h2 className={styles.playlist_title}>Current Playlist {playlistArrayNum}</h2>
+                                <div>{playlistInfo.name}</div>
+                            </div>
 
-
+                            <div className={styles.playlist_button_box}>
+                                {(playlistArrayNum > 0) && <button className={styles.playlist_button} onClick={prevPlaylistHandler}>prev playlist</button>}
+                                {(playlistArrayNum < 9) && <button className={styles.playlist_button} onClick={nextPlaylistHandler}>next playlist</button>}
+                            </div>
+                        </div>
+                        <img src={playlistInfo.image} alt="playlist graphic" />
+                    </div>
+                </div>)
+                }
 
 
                 <div>
-
-
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="card-title">
-                                <div>
-                                    {!isLoading &&
-                                        <div>
-                                            playlist name: {playlistInfo.name}
-                                            <PauseButton />
-                                            <ResumeButton />
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        {!isLoading && <SongSection trackList={playlistInfo.tracks} />}
-                    </div>
-
-
+                    {!isLoading && <SongSection trackList={playlistInfo.tracks} />}
                 </div>
             </div>
         </Fragment>
