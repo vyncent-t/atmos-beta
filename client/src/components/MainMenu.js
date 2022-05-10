@@ -19,7 +19,7 @@ function MainMenu(props) {
                 <VideoForm />
             </div>
             <div className={styles.create_button_box}>
-                {(videoChoice !== "none" && musicChoice !== "none") && <div>
+                {(videoChoice !== null && musicChoice !== "none") && <div>
                     <Link className={styles.create_button} to="/dashboard" >Create Atmos
                     </Link>
                 </div>}

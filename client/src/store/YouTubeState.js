@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialYoutubeState = {
-    youtubechoices: {
+    youtubeChoices: {
         Beach: [
             "https://www.youtube.com/watch?v=xGRjCa49C6U",
             "https://www.youtube.com/watch?v=0ANLBX2EgmM",
@@ -38,7 +38,7 @@ const initialYoutubeState = {
             "https://www.youtube.com/watch?v=V_vj7BMawAI"
         ],
     },
-    currentChoice: "none",
+    currentChoice: null,
 
 }
 

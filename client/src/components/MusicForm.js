@@ -95,7 +95,7 @@ function MusicForm(props) {
     return (
         <div className={styles.form_container}>
             <h3>Music Choice</h3>
-            <h4>{`${musicChoice}`}</h4>
+            {(musicChoice === "none") ? <h4>No music chosen</h4> : <h4>{musicChoice}</h4>}
             <div className={styles.choice_container}>
                 <div className={styles.form_choice}>
                     <MusicButton musicKeyword="Piano" />
