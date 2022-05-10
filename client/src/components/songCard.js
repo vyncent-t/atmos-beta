@@ -1,13 +1,9 @@
-import PauseButton from "./PauseButton"
-import PlayButton from "./PlayButton"
-import ResumeButton from "./ResumeButton"
-
-import { useEffect, useState } from "react"
+import styles from "./SoundCardStyles.module.css"
 
 
 function SongCard(props) {
 
-    const [songArrayNum, setSongArrayNumber] = useState(props.arrayNum)
+    // const [songArrayNum, setSongArrayNumber] = useState(props.arrayNum)
 
     // function songArrayHandle(event) {
     //     console.log(props)
@@ -25,20 +21,18 @@ function SongCard(props) {
     // }
 
     return (
-        <div className="card" key={props.id}>
-            <div className="card-body">
-                <p className="card-text">name: {props.name}</p>
-                {/* <p className="card-text">album: {props.album}</p> */}
-                <p className="card-text">artist: {props.artist}</p>
-            </div>
+        <div className={styles.sound_card} key={props.id}>
             <div>
-                {/* <button className="btn btn-primary" value={props.place} onClick={songArrayHandle}>Play</button> */}
+                <p>{props.name}</p>
+            </div>
+            <div className={styles.song_artist}>
+                <div>
+                    <p>artist: </p>
+                </div>
+                <div>
+                    <p>{props.artist}</p>
+                </div>
 
-                {/* <PlayButton song={props.uri} /> */}
-
-                {/* 
-                <PauseButton />
-                <ResumeButton /> */}
             </div>
         </div>
 

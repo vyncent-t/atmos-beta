@@ -82,3 +82,29 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.song_container {
+	height: 500px;
+	overflow: hidden;
+	overflow-y: scroll;
+	color: white;
+	background-color: rgb(45, 45, 71);
+	border: 2px solid white;
+	border-radius: 1em;
+}
+.song_list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em 0em;
+}
+
+.song_item {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 1em;
+	padding: 1em;
+	background-color: rgb(66, 66, 103);
+	border-radius: 1em;
+}
