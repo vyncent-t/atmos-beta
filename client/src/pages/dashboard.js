@@ -11,7 +11,7 @@ function Dashboard() {
     return (
         <Fragment>
             <AtmosNavbar />
-            <div >
+            <div>
                 <div className={styles.containerdiv}>
                     <span >
                         <VideoContent />

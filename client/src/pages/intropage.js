@@ -1,5 +1,3 @@
-
-
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router"
@@ -7,7 +5,7 @@ import { spotifyActions } from "../store/SpotifyState"
 import { useLocation } from "react-router-dom"
 import Welcome from "../components/Welcome"
 import WelcomeBack from "../components/WelcomeBack"
-import styles from '../components/welcomeStyles.module.css'
+
 
 const axios = require('axios')
 
@@ -95,13 +93,13 @@ function Intropage() {
     if (locationCode.length > 20) {
         dispatch(spotifyActions.updateSpotifyCode(locationCode))
         return (
-            <div className={styles.bg}>
+            <div>
                 <WelcomeBack newCode={locationCode} />
             </div>
         )
     } else {
         return (
-            <div className={styles.bg}>
+            <div>
                 <Welcome userWelcome={spotifyAuthToggler} onRedirect={userSpotifyAuthHandler} />
             </div>
         )

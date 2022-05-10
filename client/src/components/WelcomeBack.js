@@ -1,9 +1,7 @@
-// import useAuth from "../../util/spotifyAuth"
 import welcome from '../images/welcome.png';
-import styles from './welcomeStyles.module.css'
 import { useLocation } from "react-router-dom"
-
 import { Link } from 'react-router-dom';
+import styles from './MainMenuStyles.module.css'
 
 const axios = require('axios')
 
@@ -51,21 +49,15 @@ function WelcomeBack() {
 
 
     return (
-        <div className={styles.bg}>
-            <div className={styles.containerdiv}>
-                <div className={styles.drop}>
-                    <img className="img-fluid" alt="" src={welcome}></img>
-                </div>
-                <div className="card text-center">
-                    <div className="card-body">
-                        <h5 className="card-title">Welcome to atmos! </h5>
-                        <p className="card-text">While using the app we combine youtube and spotify to allow you to both listen and watch anything of your choosing! Click whichever genre you would like to enjoy and relax!</p>
-                        <div>
-                            <div>
-                                <Link to="/menu" className="m-3 btn btn-success">Continue</Link>
-                            </div>
-                        </div>
-                    </div>
+        <div className={styles.main}>
+            <div className={styles.drop}>
+                <img className="img-fluid" alt="" src={welcome}></img>
+            </div>
+            <div className={styles.landing_about}>
+                <h5>Welcome to atmos!</h5>
+                <p>While using the app we combine youtube and spotify to allow you to both listen and watch anything of your choosing! Click whichever genre you would like to enjoy and relax!</p>
+                <div>
+                    <Link to="/menu" className={styles.create_button}>Continue</Link>
                 </div>
             </div>
         </div >

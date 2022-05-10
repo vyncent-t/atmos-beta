@@ -1,5 +1,6 @@
 import VideoButton from "./VideoButton"
 import { useSelector } from "react-redux"
+import styles from "./ContentMenuStyles.module.css"
 
 
 function VideoForm() {
@@ -49,22 +50,31 @@ function VideoForm() {
 
     return (
 
-        <div className="card bg-dark m-4">
-            <div className="card-body">
-                <div className="d-flex flex-column justify-content-center">
-                    <div className="card-title">
-                        <h2>Visual Choices</h2>
-                    </div>
-                    <div className="card-text">
-                        <p>{`Your current video genre: ${videoChoice}`}</p>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center">
-                        <VideoButton videoKeyword="Beach" />
-                        <VideoButton videoKeyword="Waterfall" />
-                        <VideoButton videoKeyword="City" />
-                        <VideoButton videoKeyword="Forest" />
-                        <VideoButton videoKeyword="Travel" />
-                    </div>
+        <div className={styles.form_container}>
+            <h3>Video Choice</h3>
+            <h4>{`${videoChoice}`}</h4>
+            <div className={styles.choice_container}>
+                <div className={styles.form_choice}>
+                    <VideoButton videoKeyword="Beach" />
+                    <VideoButton videoKeyword="Waterfall" />
+                    <VideoButton videoKeyword="City" />
+                    <VideoButton videoKeyword="Forest" />
+                    <VideoButton videoKeyword="Travel" />
+
+
+                    <VideoButton videoKeyword="Beach" />
+                    <VideoButton videoKeyword="Waterfall" />
+                    <VideoButton videoKeyword="City" />
+                    <VideoButton videoKeyword="Forest" />
+                    <VideoButton videoKeyword="Travel" />
+
+                    <VideoButton videoKeyword="Beach" />
+                    <VideoButton videoKeyword="Waterfall" />
+                    <VideoButton videoKeyword="City" />
+                    <VideoButton videoKeyword="Forest" />
+                    <VideoButton videoKeyword="Travel" />
+
+
                 </div>
             </div>
         </div>

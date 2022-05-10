@@ -4,7 +4,6 @@ import { useNavigate } from "react-router"
 import { useParams } from "react-router"
 import { useLocation } from "react-router-dom"
 import WelcomeBack from "../components/WelcomeBack"
-import styles from '../components/welcomeStyles.module.css'
 
 const axios = require('axios')
 
@@ -34,7 +33,7 @@ function WelcomePage() {
 
 
     return (
-        <div className={styles.bg}>
+        <div>
             <WelcomeBack newCode={locationCode} />
         </div>
     )

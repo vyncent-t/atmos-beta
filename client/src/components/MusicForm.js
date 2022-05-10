@@ -2,6 +2,8 @@ import MusicButton from "./MusicButton"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 
+import styles from "./ContentMenuStyles.module.css"
+
 const axios = require('axios')
 
 
@@ -90,47 +92,30 @@ function MusicForm(props) {
 
 
 
-
-    // else {
-    //     spotifyApi.searchPlaylists(`${musicChoice}`).then(
-    //         (res) => {
-    //             console.log(`music playlist res:`, res.body)
-    //             var playlistMusicItems = res.body.playlists.items
-    //             var playlistCodes = playlistMusicItems.map(playlist => {
-    //                 return playlist.id
-    //             })
-    //             updateMusicContent(playlistCodes)
-    //         }
-    //     ).catch((err) => {
-    //         console.log('Something went wrong!', err);
-    //     })
-    // }
-
-
-
-
-
-
-
-
-
     return (
-        <div className="card bg-dark m-4">
-            <div className="card-body">
-                <div className="d-flex flex-column justify-content-center">
-                    <div className="card-title">
-                        <h2>Music Choices</h2>
-                    </div>
-                    <div className="card-text">
-                        <p>{`Your current music choice: ${musicChoice}`}</p>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center">
-                        <MusicButton musicKeyword="Piano" />
-                        <MusicButton musicKeyword="Coffee Shop" />
-                        <MusicButton musicKeyword="Acoustic" />
-                        <MusicButton musicKeyword="Lofi" />
-                        <MusicButton musicKeyword="Yoga" />
-                    </div>
+        <div className={styles.form_container}>
+            <h3>Music Choice</h3>
+            <h4>{`${musicChoice}`}</h4>
+            <div className={styles.choice_container}>
+                <div className={styles.form_choice}>
+                    <MusicButton musicKeyword="Piano" />
+                    <MusicButton musicKeyword="Coffee Shop" />
+                    <MusicButton musicKeyword="Acoustic" />
+                    <MusicButton musicKeyword="Lofi" />
+                    <MusicButton musicKeyword="Yoga" />
+
+
+                    <MusicButton musicKeyword="Piano" />
+                    <MusicButton musicKeyword="Coffee Shop" />
+                    <MusicButton musicKeyword="Acoustic" />
+                    <MusicButton musicKeyword="Lofi" />
+                    <MusicButton musicKeyword="Yoga" />
+
+                    <MusicButton musicKeyword="Piano" />
+                    <MusicButton musicKeyword="Coffee Shop" />
+                    <MusicButton musicKeyword="Acoustic" />
+                    <MusicButton musicKeyword="Lofi" />
+                    <MusicButton musicKeyword="Yoga" />
                 </div>
             </div>
         </div>

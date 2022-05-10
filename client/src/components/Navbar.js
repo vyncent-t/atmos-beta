@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import menu from '../images/menubtn.png';
-import room from '../images/yourRoom.png';
-import title from '../images/altTitle.png';
+
+import styles from './NavbarStyles.module.css'
 
 
 const buttonStyles = {
@@ -11,16 +10,21 @@ const buttonStyles = {
 function AtmosNavbar() {
 
     return (
-        <nav className="bg-primary">
-            <div className="container-fluid d-flex justify-content-between">
-                <div className="pb-4">
-                    <img alt="menu" src={title}></img>
-                </div>
-                <div className="navbarbtn d-flex align-self-center">
-                    <Link to="/menu" ><img alt="menu" style={buttonStyles} src={menu}></img></Link>
-                    {/* <Link to="/dashboard"><img alt="room" src={room}></img></Link> */}
-                </div>
+        <nav className={styles.navbar}>
+            <div className={styles.navbar_icon}>
+                <Link className={styles.navbar_navlinks} to="/" >Atmos</Link>
+
             </div>
+            <ul className={styles.navbar_navlist}>
+                <li>
+                    <Link className={styles.navbar_navlinks} to="/menu" >Menu</Link>
+                </li>
+                <li>
+                    <Link className={styles.navbar_navlinks} to="/dashboard" >Dashboard</Link>
+                </li>
+
+                {/* <Link to="/dashboard"><img alt="room" src={room}></img></Link> */}
+            </ul>
         </nav>)
 }
 

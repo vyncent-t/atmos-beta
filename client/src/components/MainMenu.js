@@ -10,18 +10,20 @@ function MainMenu(props) {
     const musicChoice = useSelector((state) => state.content.musicButtonChoice)
 
     return (
-        <div className={styles.mainMenu}>
-            <h2>Please select your content</h2>
-            <div className={styles.formContainer}>
+        <div className={styles.main}>
+            <div>
+                <h2>Please select your content</h2>
+            </div>
+            <div className={styles.menu_container}>
                 <MusicForm />
                 <VideoForm />
             </div>
-            {(videoChoice !== "none" && musicChoice !== "none") && <div>
-                <div>
-                    <Link to="/dashboard" className="m-3 btn btn-success">Create Atmos
+            <div className={styles.create_button_box}>
+                {(videoChoice !== "none" && musicChoice !== "none") && <div>
+                    <Link className={styles.create_button} to="/dashboard" >Create Atmos
                     </Link>
-                </div>
-            </div>}
+                </div>}
+            </div>
         </div>
     )
 }
