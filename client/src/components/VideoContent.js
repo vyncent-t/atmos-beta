@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import YouTube from "react-youtube"
 import styles from "./VideoContentStyles.module.css"
 
@@ -20,8 +20,36 @@ function VideoContent() {
     }
 
 
+
+
+
     const [youtubeWidth, setYoutubeWidth] = useState((document.documentElement.clientWidth - 200))
     const [youtubeHeight, setYoutubeHeight] = useState((document.documentElement.clientHeight - 200))
+
+
+
+    function getWindowsDimensions() {
+        const { innerWidth: width, innerHeight: height } = window;
+        setYoutubeWidth((width - 200))
+        setYoutubeHeight((height - 200))
+        return {
+            width,
+            height
+        }
+    }
+
+    useEffect(() => {
+        function handleResize() {
+            getWindowsDimensions(getWindowsDimensions())
+        }
+
+        window.addEventListener('resize', handleResize)
+        console.log(`youtube size ${youtubeWidth} x ${youtubeHeight}`)
+
+        return () => window.removeEventListener('resize', handleResize)
+    }, [youtubeWidth, youtubeHeight])
+
+
 
 
 
