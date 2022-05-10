@@ -1,10 +1,9 @@
 .music_controls {
-	display: flexbox;
-	flex-direction: wrap;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	background-color: rgb(6, 6, 57);
+	background-color: rgb(45, 45, 71);
 	color: white;
-	padding: 1em;
 	border: 2px solid white;
 	border-radius: 1em;
 	margin: 1em 0em;
@@ -12,6 +11,74 @@
 
 .music_controls div {
 	width: auto;
-	background-color: rgb(61, 60, 60);
-	margin: 1em;
+	margin: 0.5em;
+}
+
+.control_button {
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+	padding: 0.5em;
+	border-radius: 2em;
+}
+
+.track_controls {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.track_controls div {
+	/* background-color: purple; */
+	width: auto;
+	padding: 1em;
+}
+
+.track_info {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.track_info div {
+	width: auto;
+}
+
+.track_name {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	/* background-color: rgb(45, 45, 71); */
+	/* background-color: rgb(21, 21, 132); */
+}
+
+.track_name div {
+	width: 100%;
+	font-weight: 600;
+}
+
+.track_time {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	/* background-color: rgb(45, 45, 71); */
+	/* background-color: rgb(21, 21, 132); */
+}
+
+.track_time div {
+	width: 100%;
+	font-weight: 600;
+}
+
+.audio_controls {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }

@@ -19,9 +19,6 @@ function SongSection(props) {
 
     return (
         <div className={styles.song_section}>
-            <div>
-
-            </div>
             <MusicControls songList={musicArray} />
             {/* {props.trackList &&
                 <div>

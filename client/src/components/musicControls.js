@@ -220,67 +220,85 @@ function MusicControls(props) {
         }, [currentSong, repeatOn, musicPlayTime, songDuration]
     )
 
+    function millisToMinutes(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0)
+        return `${minutes} : ${seconds}`
+    }
 
     return (
         <div>
             {currentSong ?
                 (
-                    <div className="rounded m-3 p-3">
+                    <div >
                         <div>
-                            <h1>music controls</h1>
                             <div className={styles.music_controls}>
-                                <div >
-                                    <div>
-                                        now listening to {currentSong.name} {currentSong.uri}
-                                    </div>
-                                    <div >
-                                        {
-                                            autoPlayOn ? (
-                                                <div>
-                                                    <button className="btn btn-success" onClick={
-                                                        autoPlayOffHandler} >Disable Auto Play</button>
-                                                </div>
-                                            ) : <div>
-                                                <button className="btn btn-success" onClick={
-                                                    () => { autoPlayOnHandler(currentSong.uri) }
-                                                }>Enable Auto Play</button>
+                                <div className={styles.track_controls}>
+                                    {
+                                        autoPlayOn ? (
+                                            <div>
+                                                <button className={styles.control_button} onClick={
+                                                    autoPlayOffHandler} >Disable Auto Play</button>
                                             </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div >
+                                        ) : <div>
+                                            <button className={styles.control_button} onClick={
+                                                () => { autoPlayOnHandler(currentSong.uri) }
+                                            }>Enable Auto Play</button>
+                                        </div>
+                                    }
                                     {songArrayNum > 0 &&
-                                        <button className="btn btn-light m-1" onClick={prevSongHandler}>prev track</button>
+                                        <div>
+                                            <button className={styles.control_button} onClick={prevSongHandler}>prev track</button>
+                                        </div>
                                     }
 
                                     {
                                         songArrayNum < 100 &&
-                                        <button className="btn btn-light m-1" onClick={nextSongHandler}>next track</button>
+                                        <div>
+                                            <button className={styles.control_button} onClick={nextSongHandler}>next track</button>
+                                        </div>
                                     }
                                 </div>
 
+                                <div className={styles.track_info}>
+                                    {/* <div>
+                                        now listening to {currentSong.name} {currentSong.uri}
+                                    </div> */}
+                                    <div className={styles.track_name}>
+                                        <div>Now listening to</div>
+                                        <div>{currentSong.name}</div>
+                                    </div>
 
-                                <div >
-                                    {musicPlaying && <div>PLAYING MUSIC</div>}
-                                    {!musicPlaying && <div>NO MUSIC</div>}
-                                    <div>
-                                        current place in array {songArrayNum}
+                                    <div className={styles.track_time}>
+                                        <div>
+                                            {millisToMinutes(musicPlayTime)} / {millisToMinutes(songDuration)}
+                                        </div>
+                                        {/* <div>
+                                            current place in array {songArrayNum}
+                                        </div> */}
+                                        {/* <div>
+                                            current song duration {songDuration}
+                                        </div> */}
+                                        {/* <div>
+                                            current song play time {musicPlayTime}
+                                        </div> */}
                                     </div>
-                                    <div>
-                                        current song duration {songDuration}
-                                    </div>
-                                    <div>
-                                        current song play time {musicPlayTime}
+
+
+                                    <div className={styles.audio_controls}>
+                                        {musicPlaying && <div>
+                                            <button className={styles.control_button} onClick={() => { pauseSong() }}>Pause</button>
+                                        </div>}
+
+                                        {!musicPlaying && <div>
+                                            <button className={styles.control_button} onClick={() => { resumeSong() }}>Resume</button>
+                                        </div>}
+                                        <Soundbar />
                                     </div>
                                 </div>
 
-                                <div>
-                                    <button className="m-1 btn btn-light" onClick={() => { pauseSong() }}>Pause</button>
-                                    <button className="m-1 btn btn-light" onClick={() => { resumeSong() }}>Resume</button>
-                                </div>
-                                <div>
-                                    <Soundbar />
-                                </div>
+
+
                             </div>
                         </div>
                         {musicArrayList &&

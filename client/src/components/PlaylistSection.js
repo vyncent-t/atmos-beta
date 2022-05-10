@@ -143,7 +143,7 @@ function PlaylistSection(props) {
                                 {(playlistArrayNum < 9) && <button className={styles.playlist_button} onClick={nextPlaylistHandler}>next playlist</button>}
                             </div>
                             <div>
-                                <h2 className={styles.playlist_title}>Current Playlist {playlistArrayNum}</h2>
+                                <h2 className={styles.playlist_title}>Current Playlist</h2>
                                 <h3>{playlistInfo.name}</h3>
                             </div>
                             <img className={styles.playlist_image} src={playlistInfo.image} alt="playlist graphic" />

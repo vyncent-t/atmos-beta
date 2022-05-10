@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react"
+
+
+import styles from "./SoundBarStyles.module.css"
+
 const axios = require('axios')
 
 
@@ -41,14 +45,14 @@ function Soundbar() {
     return (
         <div>
             <div >
-                <button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel - songAudioLevel) }}>mute</button>
+                <button className={styles.audio_button} onClick={() => { setAudioLevel(songAudioLevel - songAudioLevel) }}>mute</button>
 
-                {(songAudioLevel > 0) ? (<button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >) : (<button className="m-1 btn btn-light disabled" onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >)}
+                {(songAudioLevel > 0) ? (<button className={styles.audio_button} onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >) : (<button className={styles.disabled_button} onClick={() => { setAudioLevel(songAudioLevel - 10) }}>-</button >)}
 
-                {(songAudioLevel < 100) ? (<button className="m-1 btn btn-light" onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>) : (<button className="m-1 btn btn-light disabled" onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>)}
+                {(songAudioLevel < 100) ? (<button className={styles.audio_button} onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>) : (<button className={styles.disabled_button} onClick={() => { setAudioLevel(songAudioLevel + 10) }}>+</button>)}
             </div >
-            <div className="w-25">
-                <label for="musicAudio" className="form-label">Speaker {songAudioLevel}</label>
+            <div >
+                <label for="musicAudio" >Volume {songAudioLevel}</label>
                 <input
                     type="range"
                     className="form-range"
@@ -63,5 +67,5 @@ function Soundbar() {
         </div>
     )
 }
-                    
+
 export default Soundbar
