@@ -1,0 +1,50 @@
+.form_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 50%;
+	width: 50%;
+	padding: 2em;
+}
+
+.choice_container {
+	width: 90%;
+	background-color: rgb(66, 66, 103);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid white;
+	border-radius: 2em;
+	padding: 2em;
+}
+
+.form_choice {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	/* background-color: green; */
+	width: 90%;
+}
+
+/* .choice_button_box {
+	margin: 0.5em;
+} */
+
+.choice_button {
+	text-decoration: none;
+	color: white;
+	border: 2px solid white;
+	border-radius: 2em;
+	background-color: transparent;
+	margin: 0.5em;
+	padding: 0.5em;
+	width: fit-content;
+}
+
+.choice_button:hover {
+	background-color: midnightblue;
+}

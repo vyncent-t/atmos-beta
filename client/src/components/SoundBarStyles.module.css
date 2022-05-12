@@ -1,0 +1,42 @@
+.audio_container {
+	width: 80%;
+}
+
+.audio_button {
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.audio_button:hover {
+	color: white;
+	background-color: midnightblue;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.audio_button_box {
+	display: flex;
+	flex-direction: row;
+}
+
+.disabled_button {
+	pointer-events: none;
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.audio_slider {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,30 @@
+.sound_card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	/* background-color: lightblue; */
+}
+
+.song_artist {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 50%;
+	/* background-color: purple; */
+}
+
+.song_artist div {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: fit-content;
+	/* background-color: blue; */
+}
+
+.song_name {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 25%;
+}
