@@ -1,7 +1,7 @@
 import welcome from '../images/welcome.png';
 import { useLocation } from "react-router-dom"
 import { Link } from 'react-router-dom';
-import styles from './MainMenuStyles.module.css'
+import styles from './IntroStyles.module.css'
 
 const axios = require('axios')
 
@@ -49,15 +49,59 @@ function WelcomeBack() {
 
 
     return (
-        <div className={styles.main}>
-            <div className={styles.drop}>
-                <img className="img-fluid" alt="" src={welcome}></img>
-            </div>
-            <div className={styles.landing_about}>
-                <h5>Welcome to atmos!</h5>
-                <p>While using the app we combine youtube and spotify to allow you to both listen and watch anything of your choosing! Click whichever genre you would like to enjoy and relax!</p>
+        <div className={styles.intro_main}>
+
+            <div className={styles.intro_about}>
                 <div>
-                    <Link to="/menu" className={styles.create_button}>Continue</Link>
+                    <h5>Instructions</h5>
+                </div>
+                <div>
+                    <div className={styles.intro_tutorial}>
+                        <div className={styles.intro_card}>
+                            <h3>1. Prepare</h3>
+                            <div>
+                                <p>The first and most important step is to ready your listening device!</p>
+                            </div>
+                            <div>
+                                <p>
+                                    Open spotify on any platform (mobile app / desktop app / web browser) and play any track to test your connection to the spotify server.
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    You will be controlling your music from the dashboard later!
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.intro_card}>
+                            <h3>2. Choose</h3>
+                            <div>
+                                <p>Once you establish a connection to spotify on your device, continue to the menu.</p>
+                            </div>
+                            <div>
+                                <p>
+                                    At the menu, select the music genre you would like to listen to and the style of scenery you would like to watch.
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    You can return to the menu and change your content at anytime!
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.intro_card}>
+                            <h3>3. Relax</h3>
+                            <div>
+                                <p>Once you chose your music and scenery options you will be taken to the dashboard where your content will be loaded and play automatically.</p>
+                            </div>
+                            <div>
+                                <p>Below the video are the controls for the music, feel free to adjust the volume, change the playlist, change a song!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.intro_button_box}>
+                    <Link to="/menu" className={styles.intro_button}>Continue to menu</Link>
                 </div>
             </div>
         </div >

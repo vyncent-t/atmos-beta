@@ -7,7 +7,8 @@ import SongCard from "./SongCard"
 import Soundbar from "./SoundBar"
 import styles from './MusicControlStyles.module.css'
 
-
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const axios = require('axios')
 
@@ -237,6 +238,7 @@ function MusicControls(props) {
                                     {
                                         autoPlayOn ? (
                                             <div>
+
                                                 <button className={styles.control_button} onClick={
                                                     autoPlayOffHandler} >Disable Auto Play</button>
                                             </div>
@@ -287,11 +289,13 @@ function MusicControls(props) {
 
                                     <div className={styles.audio_controls}>
                                         {musicPlaying && <div>
-                                            <button className={styles.control_button} onClick={() => { pauseSong() }}>Pause</button>
+                                            <button className={styles.control_button} onClick={() => { pauseSong() }}>
+                                                <PauseIcon />
+                                            </button>
                                         </div>}
 
                                         {!musicPlaying && <div>
-                                            <button className={styles.control_button} onClick={() => { resumeSong() }}>Resume</button>
+                                            <button className={styles.control_button} onClick={() => { resumeSong() }}><PlayArrowIcon /></button>
                                         </div>}
                                         <Soundbar />
                                     </div>
@@ -321,7 +325,7 @@ function MusicControls(props) {
                                                         href={song.track.href}
                                                     />
                                                     <div>
-                                                        <button className={styles.control_button} value={index} onClick={songArrayHandle}>Play</button>
+                                                        <button className={styles.control_button} value={index} onClick={songArrayHandle}><PlayArrowIcon /></button>
                                                     </div>
                                                 </div>
                                             )

@@ -1,0 +1,93 @@
+.intro_main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	width: 100%;
+	margin-top: 1em;
+}
+
+.intro_about {
+	color: white;
+	background-color: rgb(45, 45, 71);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid white;
+	border-radius: 2em;
+	margin: 2em;
+	padding: 2em;
+	width: 75%;
+}
+
+/* .intro_about div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+} */
+
+.intro_desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+}
+
+.intro_attention {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	font-weight: bolder;
+	margin: 1em;
+}
+
+.intro_button {
+	color: white;
+	background-color: transparent;
+	text-emphasis: none;
+	text-decoration: none;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.intro_button:hover {
+	color: white;
+	text-emphasis: none;
+	text-decoration: none;
+	background-color: midnightblue;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.intro_button_box {
+	color: white;
+	margin: 2em;
+	padding: 1em;
+}
+
+.intro_tutorial {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	padding: 1em;
+}
+
+.intro_card {
+	color: white;
+	background-color: rgb(66, 66, 103);
+	text-emphasis: none;
+	text-decoration: none;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+	width: 25%;
+}

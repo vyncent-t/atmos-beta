@@ -16,8 +16,20 @@
 .control_button {
 	color: white;
 	background-color: transparent;
+	text-emphasis: none;
+	text-decoration: none;
 	border: 2px solid white;
-	padding: 0.5em;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.control_button:hover {
+	color: white;
+	text-emphasis: none;
+	text-decoration: none;
+	background-color: midnightblue;
+	border: 2px solid white;
+	padding: 0.5em 1em;
 	border-radius: 2em;
 }
 

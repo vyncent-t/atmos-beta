@@ -92,7 +92,7 @@ function VideoContent() {
             <p>{youtubeArray[0]}</p> */}
             <div >
                 <div >
-                    {arrayNum > 0 && <button className={styles.video_button} onClick={prevHandler}>back</button>}
+                    {arrayNum > 0 && <button className={styles.video_button} onClick={prevHandler}>prev video</button>}
                     {arrayNum < totalVideoAvailable - 1 && <button className={styles.video_button} onClick={nextHandler}>next video</button>}
                 </div>
             </div>

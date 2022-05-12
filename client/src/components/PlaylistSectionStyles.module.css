@@ -15,9 +15,17 @@
 	color: white;
 	background-color: transparent;
 	border: 2px solid white;
-	padding: 0.5em;
-	border-radius: 2em;
 	margin: 0.5em;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.playlist_button:hover {
+	color: white;
+	background-color: midnightblue;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
 }
 
 .playlist_card {

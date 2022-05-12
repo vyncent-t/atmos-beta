@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import title from '../images/title.png';
 import tv from '../images/tvlogo.png';
-import styles from './MainMenuStyles.module.css'
+import styles from './IntroStyles.module.css'
 
 //styling
 
@@ -12,31 +12,52 @@ function Welcome(props) {
     console.log(`welcome comp loaded is auth ${isAuth}`)
 
     return (
-        <div className={styles.main}>
-            <img alt="" className="img-fluid" src={title}></img>
-            <div className={styles.drop}>
-                <img className="img-fluid mb-3" alt="" src={tv}></img>
-            </div>
-            <div className={styles.containerdivintro}>
-                <p className={styles.text} >A Visual Auditory Experience</p>
-            </div>
-            {!isAuth && (
-                <div className={styles.landing_about}>
-                    <div>
-                        <p className={styles.texts} >*NOTE* For this app to work we need to use some of your data from a Premium Spotify account! Please note we do note keep any of the data you lend, it is only to grant access to spotify features.</p>
-                    </div>
-                    <div>
-                        <button className={styles.create_button} onClick={props.userWelcome}>Agree</button>
-                    </div>
-                </div>)}
-            {isAuth && (<div className={styles.landing_about}>
+        <div className={styles.intro_main}>
+            <div className={styles.intro_about}>
                 <div>
-                    <p className={styles.texts} >*NOTE* Thank you! You will need to be redirected to the spotify website in order to obtain your credentials, you will be redirected back once you're done!</p>
+                    <h1>Welcome to Atmos</h1>
                 </div>
                 <div>
-                    <button className={styles.create_button} onClick={props.onRedirect}>Authorize on Spotify</button>
+                    <p>Come experience a new to unwind</p>
                 </div>
-            </div>)}
+                {!isAuth && (
+                    <div className={styles.intro_desc}>
+                        <div>
+                            <p>The Atmos project is a platform that allows you to enjoy both audio and visual media simultaneously to curate a relaxing environment tailored to you.</p>
+                        </div>
+                        <div>
+                            <p>The is achieved by using the Spotify API and Youtube API in order to provide you with a set of playlists curated by your choice of the music and scenery genre.</p>
+                        </div>
+
+                        <div className={styles.intro_attention}>
+                            <p>*PLEASE NOTE* The music component of this platform requires a Premium Spotify account! The Atmos Project will ask Spotify for authorization only to grant access to Spotify features.</p>
+                        </div>
+                        <div className={styles.intro_attention}>
+                            <p>ATMOS DOES NOT KEEP ANY DATA PROVIDED</p>
+                        </div>
+
+                        <div>
+                            <button className={styles.intro_button} onClick={props.userWelcome}>Agree</button>
+                        </div>
+                    </div>
+                )}
+                {isAuth && (
+                    <div className={styles.intro_desc}>
+                        <div className={styles.intro_attention}>
+                            <p>Thank you!</p>
+                        </div>
+                        <div>
+                            <p>Before we continue you will need to be redirected to the official Spotify website to authorize your music session.</p>
+                        </div>
+                        <div>
+                            <p>You will be redirected back once you're done!</p>
+                        </div>
+                        <div>
+                            <button className={styles.intro_button} onClick={props.onRedirect}>Authorize on Spotify</button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import styles from "./SoundCardStyles.module.css"
+import styles from "./SongCardStyles.module.css"
 
 
 function SongCard(props) {
