@@ -24,14 +24,14 @@ app.use(bodyParser.json())
 
 
 
+// ALWAYS ADD THIS LINE AND USE CONST path
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // ************** NOTE ***********************
 // these functions in the route are meant to chained in async so that the response isn't being sent back until the very last endpoint is reached
 
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
 
 
 app.get('/spotify-redirect', async (req, res) => {
