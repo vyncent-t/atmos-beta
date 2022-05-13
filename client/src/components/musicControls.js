@@ -1,8 +1,5 @@
-import PauseButton from "./PauseButton"
-import PlayButton from "./PlayButton"
-import ResumeButton from "./ResumeButton"
-
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useState } from "react"
 import SongCard from "./SongCard"
 import Soundbar from "./SoundBar"
 import styles from './MusicControlStyles.module.css'

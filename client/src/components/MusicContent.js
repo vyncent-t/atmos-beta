@@ -1,6 +1,3 @@
-
-import PauseButton from "./PauseButton"
-import PlayButton from "./PlayButton"
 import PlaylistSection from "./PlaylistSection"
 
 
