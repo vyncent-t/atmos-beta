@@ -4,16 +4,15 @@
 	"version": "0.1.0",
 	"main": "server/server.js",
 	"scripts": {
-		"server": "node src/server/server.js",
+		"server": "node server/server.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
-		"serverstart": "node server/server.js",
 		"develop": "concurrently \"cd server && npm run server\"  \"cd client && npm start\" ",
-		"install": "cd server && npm i && cd ../client && npm i"
+		"install": "cd server && npm i && cd ../src && npm i"
 	},
 	"eslintConfig": {
 		"extends": [
