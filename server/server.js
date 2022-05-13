@@ -29,9 +29,10 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
+
 
 // ************** NOTE ***********************
 // these functions in the route are meant to chained in async so that the response isn't being sent back until the very last endpoint is reached
@@ -166,6 +167,12 @@ app.get('/fruits', (req, res) => {
         "fruits": ["apple", "banana", "mango"]
     })
 })
+
+
+// // ALWAYS ADD THIS LINE AND USE CONST path
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 
 
