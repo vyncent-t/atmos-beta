@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 
 import { useState } from "react"
-import SongSection from "./SongSection";
 
+import SongSection from "./SongSection"
 import styles from "./PlaylistSectionStyles.module.css"
 
 const axios = require('axios')
@@ -23,15 +23,6 @@ function PlaylistSection(props) {
     function prevPlaylistHandler() {
         setPlaylistArrayNumber(playlistArrayNum - 1)
     }
-
-    // if (playlistArrayNum < -1) {
-    //     nextPlaylistHandler()
-    // }
-
-    // if (playlistArrayNum > 10) {
-    //     prevPlaylistHandler()
-    // }
-
 
     const [playlistInfo, setPlaylistInfo] = useState({})
 
