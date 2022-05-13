@@ -181,8 +181,8 @@ function MusicControls(props) {
             let interval = null
             if (musicPlaying) {
                 interval = setInterval(() => {
-                    setMusicPlayTime(musicPlayTime + 5000)
-                }, 5000)
+                    setMusicPlayTime(musicPlayTime + 1000)
+                }, 1000)
 
                 if ((musicPlayTime >= songDuration) && autoPlayOn) {
                     // reset the playtime to 0 for new song
