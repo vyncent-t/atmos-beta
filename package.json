@@ -41,8 +41,5 @@
 		"nodemon": "^2.0.13",
 		"concurrently": "^7.0.0",
 		"dotenv": "^10.0.0"
-	},
-	"dependencies": {
-		"@material-ui/icons": "^4.11.3",
 	}
 }
