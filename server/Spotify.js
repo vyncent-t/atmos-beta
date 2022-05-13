@@ -26,9 +26,9 @@ var scopes = [
 
 
 // comment out deploy link when working
-var redirectUri = 'http://localhost:3000/welcome/'
+// var redirectUri = 'http://localhost:3000/welcome/'
 
-// var redirectUri = 'https://the-atmos-project.herokuapp.com/welcome/'
+var redirectUri = 'https://the-atmos-project.herokuapp.com/welcome/'
 
 
 
