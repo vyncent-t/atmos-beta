@@ -4,10 +4,6 @@
 	"main": "server/server.js",
 	"scripts": {
 		"server": "node server/server.js",
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
 		"develop": "concurrently \"cd server && npm run server\"  \"cd client && npm start\" ",
 		"install": "cd server && npm i && cd ../client && npm i"
 	},
