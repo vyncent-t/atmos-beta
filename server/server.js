@@ -27,8 +27,15 @@ app.use(bodyParser.json())
 // these functions in the route are meant to chained in async so that the response isn't being sent back until the very last endpoint is reached
 
 
-
-
+app.get('/', (req, res, next) => {
+    res.status(200).json({
+        status: 'success',
+        data: {
+            name: 'atmos-project'
+        }
+    })
+}
+)
 
 
 app.get('/spotify-redirect', async (req, res) => {
