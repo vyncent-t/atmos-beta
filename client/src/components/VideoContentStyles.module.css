@@ -1,0 +1,27 @@
+.video_content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(25, 25, 39);
+}
+
+.video_button {
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+.video_button:hover {
+	color: white;
+	background-color: midnightblue;
+	border: 2px solid white;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+.youtube_container {
+	width: 100%;
+}
