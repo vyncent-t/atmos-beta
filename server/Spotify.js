@@ -24,7 +24,11 @@ var scopes = [
     "user-read-recently-played",
 ]
 
-var redirectUri = 'https://the-atmos-project.herokuapp.com/welcome/'
+
+// comment out deploy link when working
+var redirectUri = 'http://localhost:3000/welcome/'
+
+// var redirectUri = 'https://the-atmos-project.herokuapp.com/welcome/'
 
 
 

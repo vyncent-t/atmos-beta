@@ -322,7 +322,7 @@ function MusicControls(props) {
                                                         href={song.track.href}
                                                     />
                                                     <div>
-                                                        <button className={styles.control_button} value={index} onClick={songArrayHandle}><PlayArrowIcon /></button>
+                                                        <button className={styles.control_button} value={index} onClick={songArrayHandle}>Play</button>
                                                     </div>
                                                 </div>
                                             )
