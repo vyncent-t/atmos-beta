@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const QueryString = require('qs');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyCustom = require('./Spotify');
+const path = require('path');
+
 
 // let spotifyClient = process.env.spotify_clientid
 // let spotifySecret = process.env.spotify_secret
@@ -27,15 +29,9 @@ app.use(bodyParser.json())
 // these functions in the route are meant to chained in async so that the response isn't being sent back until the very last endpoint is reached
 
 
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        status: 'success',
-        data: {
-            name: 'atmos-project'
-        }
-    })
-}
-)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 
 app.get('/spotify-redirect', async (req, res) => {
