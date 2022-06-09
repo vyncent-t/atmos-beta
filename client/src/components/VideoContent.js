@@ -19,9 +19,7 @@ function VideoContent() {
         setArrayNumber(arrayNum - 1)
     }
 
-
-
-
+    // youtube content params
 
     const [youtubeWidth, setYoutubeWidth] = useState((document.documentElement.clientWidth - 200))
     const [youtubeHeight, setYoutubeHeight] = useState((document.documentElement.clientHeight - 200))
