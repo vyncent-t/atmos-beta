@@ -14,7 +14,7 @@ function WelcomeBack() {
     let authCode = location.search.slice(6)
     console.log("new code")
     console.log(authCode)
-    var accesstoken = "no token right now"
+    let accesstoken = "no token right now"
 
 
 

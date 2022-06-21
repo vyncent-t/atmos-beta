@@ -26,7 +26,7 @@ var scopes = [
 
 
 // comment out deploy link when working
-// var redirectUri = 'http://localhost:3000/welcome/'
+// var redirectUri = 'http://localhost:3000/welcome'
 
 var redirectUri = 'https://the-atmos-project.herokuapp.com/welcome/'
 
@@ -101,7 +101,7 @@ async function spotifyAuth(code) {
     var spotifyApi = new SpotifyWebApi(credentials)
 
     // setting a temp variable for the token
-    let musicToken = "waiting token"
+    let musicToken = "waiting token temp"
 
     // printing the spotify auth code from the redirect params
     console.log("printing code from spotifyAuth")

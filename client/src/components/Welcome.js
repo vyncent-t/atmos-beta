@@ -1,6 +1,4 @@
 import { useSelector } from "react-redux"
-import title from '../images/title.png';
-import tv from '../images/tvlogo.png';
 import styles from './IntroStyles.module.css'
 
 //styling
