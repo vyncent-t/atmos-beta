@@ -8,9 +8,10 @@ The Atmos Project is a relaxation project based within a multi-media consumption
 
 ## Getting started
 
-Please note that this project is still in its beta development cycle, much of the following information will be subject to change during the evolution of this project.
-
 **DEMO VIDEO: - [THE-ATMOS-PROJECT](https://www.youtube.com/watch?v=aj7OF1mASa0)**
+![image](https://user-images.githubusercontent.com/78232183/168392114-038c1b06-4843-40a9-86e9-22456a781156.png)
+
+Please note that this project is still in its beta development cycle, much of the following information will be subject to change during the evolution of this project.
 
 Tools I would recommend for this project
 
