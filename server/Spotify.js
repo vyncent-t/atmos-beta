@@ -54,9 +54,27 @@ console.log(`READING FROM SPOTIFY JS - ${spotifySecret}`)
 //          ALWAYS REMEMBER TO SET THE ACCESS TOKEN BEFORE RUNNING THE TRY BLOCK
 
 // this function will return the link to the client as a response - which will be needed to execute a window.change function to redirect the user once the button is clicked
+
+// replace
+
+
+// async function spotifyRedirect(spotifyCode) {
+//     try {
+//         let authrorizeURL = `https://accounts.spotify.com/authorize?client_id=3a89823c52cd490496fa7bc8e88133bd&response_type=code&redirect_uri=${redirectUri}&scope=user-read-email%20playlist-read-private%20playlist-read-collaborative%20user-read-private%20user-library-read%20user-top-read%20user-read-playback-state%20user-modify-playback-state%20user-read-currently-playing%20user-read-recently-played`
+//         console.log("printing the auth url")
+//         console.log(authrorizeURL)
+
+//         return authrorizeURL
+
+//     } catch (error) {
+//         console.log(error)
+//         console.log("spotify error from custom tool")
+//     }
+// }
+
 async function spotifyRedirect(spotifyCode) {
     try {
-        let authrorizeURL = `https://accounts.spotify.com/authorize?client_id=3a89823c52cd490496fa7bc8e88133bd&response_type=code&redirect_uri=${redirectUri}&scope=user-read-email%20playlist-read-private%20playlist-read-collaborative%20user-read-private%20user-library-read%20user-top-read%20user-read-playback-state%20user-modify-playback-state%20user-read-currently-playing%20user-read-recently-played`
+        let authrorizeURL = `https://accounts.spotify.com/authorize?client_id=${spotifyClient}&response_type=code&redirect_uri=${redirectUri}&scope=user-read-email%20playlist-read-private%20playlist-read-collaborative%20user-read-private%20user-library-read%20user-top-read%20user-read-playback-state%20user-modify-playback-state%20user-read-currently-playing%20user-read-recently-played`
         console.log("printing the auth url")
         console.log(authrorizeURL)
 
