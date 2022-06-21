@@ -8,7 +8,7 @@ const axios = require('axios')
 
 
 function MusicForm(props) {
-    const musicToken = localStorage.getItem("spotifyToken")
+    let musicToken = localStorage.getItem("spotifyToken")
     console.log(`need the normal music token ${musicToken}`)
     const musicChoice = useSelector((state) => state.content.musicButtonChoice)
 
@@ -24,7 +24,7 @@ function MusicForm(props) {
     // by default the fresh menu has a value of "none" for the music genre playlist, this makes the default data search for peaceful unless a music genre is clicked, making the musicChoice variable change - but the button to create a room isnt going to render unless the user clicks both music and video options
 
     if (musicChoice === "none") {
-
+        console.log(`default music active through token ${musicToken}`)
         axios.post('/spotify-set', {
             userData: {
                 musicKey: "peaceful",
